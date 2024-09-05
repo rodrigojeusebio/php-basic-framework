@@ -1,37 +1,17 @@
 <?php
+require_once dirname(__FILE__) . "/core/Router.php";
+require_once dirname(__FILE__) . "/app/controllers/User.php";
+require_once dirname(__FILE__) . "/core/global_functions.php";
+use Core\Router;
+use App\Controllers\User;
 
-function style_key($key)
-{
-    return "<span style=\"color: green; font-weight: bold\">$key</span>";
-}
 
-function style_value($value)
-{
-    return "<span style=\"color: orange; \">$value</span>";
-}
-function d($value)
-{
-    $message = '<div style="background-color: black; border: 2px solid orange; color: white; padding: 10px;"><code>';
-    $footer = '</code></div>';
+$router = new Router();
 
-    if (is_array($value)) {
-        foreach ($value as $k => $v) {
-            $message .= style_key($k) . ' => ' . style_value($v) . '<br>';
-        }
-    } else {
-        $message .= style_value($value);
-    }
-
-    $message .= $footer;
-
-    echo $message;
-}
-function dd($value)
-{
-    d($value);
-    die;
-}
+$router->get('/users', User::class, 'index');
 
 $path_info = $_SERVER['PATH_INFO'];
-dd($path_info);
-d($_SERVER);
+$method = 'GET';
+$router->route($path_info, $method);
+// d($path_info);
+// dd($_SERVER);
