@@ -1,17 +1,6 @@
 <?php
-require_once dirname(__FILE__) . "/core/Router.php";
-require_once dirname(__FILE__) . "/app/controllers/User.php";
-require_once dirname(__FILE__) . "/core/global_functions.php";
-use Core\Router;
-use App\Controllers\User;
+require dirname(__FILE__) . '/vendor/autoload.php';
+require_once dirname(__FILE__) . "/Core/global_functions.php";
 
+require dirname(__FILE__) . "/Core/Bootstrap.php";
 
-$router = new Router();
-
-$router->get('/users', User::class, 'index');
-
-$path_info = $_SERVER['PATH_INFO'];
-$method = 'GET';
-$router->route($path_info, $method);
-// d($path_info);
-// dd($_SERVER);

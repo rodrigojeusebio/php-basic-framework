@@ -6,6 +6,6 @@ class User
 {
     public static function index()
     {
-        dd('hello from index');
+        dd('hello from users');
     }
 }
