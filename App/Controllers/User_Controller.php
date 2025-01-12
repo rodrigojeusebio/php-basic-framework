@@ -2,12 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Models\User;
+use Core\Database;
 use Core\Render;
 
 class User_Controller
 {
     public static function index()
     {
+        $user = User::find(1);
+        var_dump($user->id);
         dd('hello from users');
     }
 
