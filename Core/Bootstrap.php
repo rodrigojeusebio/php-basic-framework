@@ -1,19 +1,20 @@
 <?php
 namespace Core;
 use Core\Router;
+use Core\HttpMethod;
 use App\Controllers\User;
 
+Router::get('/users/{:id}', User::class, 'show');
+Router::get('/users', User::class, 'index');
 
-$router = new Router();
+$path_info = $_SERVER['REQUEST_URI'];
 
-$router->get('/users', User::class, 'index');
+$method = $_SERVER[''] ?? $_SERVER['REQUEST_METHOD'];
 
-$path_info = $_SERVER['PATH_INFO'];
-
-$method = 'GET';
 try
 {
-    $router->route($path_info, $method);
+    $method = HttpMethod::tryFrom($method);
+    Router::route($path_info, $method);
 }
 catch (\Exception $e)
 {

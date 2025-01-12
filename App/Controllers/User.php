@@ -8,4 +8,9 @@ class User
     {
         dd('hello from users');
     }
+
+    public static function show(int $user_id, string $other = null)
+    {
+        dd("user $user_id is happy to see you");
+    }
 }
