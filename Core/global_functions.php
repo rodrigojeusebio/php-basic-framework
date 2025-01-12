@@ -14,7 +14,6 @@ function style_value($value)
 function d($value)
 {
 
-
     $message = '<div style="background-color: black; border: 2px solid orange; color: white; padding: 10px;"><code>';
     $footer  = '</code></div>';
 

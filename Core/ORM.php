@@ -2,10 +2,12 @@
 
 namespace Core;
 
+
 class ORM
 {
     public array $attributes = [];
     public static string $table_name;
+
 
     public function __get($attribute)
     {
@@ -37,4 +39,3 @@ class ORM
     }
 
 }
-;
