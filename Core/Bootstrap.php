@@ -2,18 +2,16 @@
 namespace Core;
 use Core\Router;
 use Core\HttpMethod;
-use App\Controllers\User;
 
-Router::get('/users/{:id}', User::class, 'show');
-Router::get('/users', User::class, 'index');
+include_once Config::get('app_path').'Routes/web.php';
 
 $path_info = $_SERVER['REQUEST_URI'];
 
-$method = $_SERVER[''] ?? $_SERVER['REQUEST_METHOD'];
+$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 try
 {
-    $method = HttpMethod::tryFrom($method);
+    $method = HttpMethod::tryFrom(strtoupper($method));
     Router::route($path_info, $method);
 }
 catch (\Exception $e)
