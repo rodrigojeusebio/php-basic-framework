@@ -38,4 +38,29 @@ class ORM
         return $orm;
     }
 
+    public static function create($values)
+    {
+        $result = Database::query("PRAGMA table_info('users');");
+
+        $table_columns = [];
+
+
+        foreach ($result as $row) {
+            $table_columns[] = $row['name'];
+        }
+
+        $orm_values = [];
+        foreach ($values as $key => $value)
+        {
+            if (in_array($key, $table_columns))
+            {
+                $orm_values[$key] = $value;
+            }
+        }
+
+        $d = Database::get();
+        $d->insert(static::$table_name, $orm_values);
+
+    }
+
 }

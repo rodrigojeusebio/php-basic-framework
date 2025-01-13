@@ -12,7 +12,6 @@ class Database extends Singleton
     public array $select = [];
     public array $wheres = [];
     public array $joins = [];
-    public string $from = '';
     public string $table_name = '';
 
     public function __construct()
@@ -28,7 +27,7 @@ class Database extends Singleton
 
     public static function query(string $query)
     {
-        return static::get_instance()->database->query($query, fetchMode: \PDO::FETCH_ASSOC)->fetch();
+        return static::get_instance()->database->query($query, fetchMode: \PDO::FETCH_ASSOC)->fetchAll();
     }
 
     public function select(string|array $value): self
@@ -111,5 +110,13 @@ class Database extends Singleton
         }
 
         return $sql;
+    }
+
+    public function insert(string $table_name, array $values): void
+    {
+        $fields = implode(', ', array_keys($values));
+        $values = implode(', ', $values);
+        $sql    = "INSERT INTO $table_name ($fields) VALUES ($values);";
+        $this->query($sql);
     }
 }

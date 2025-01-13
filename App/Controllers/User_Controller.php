@@ -37,7 +37,10 @@ class User_Controller
 
     public static function store()
     {
-        User_Controller::index();
+        $attributes = $_POST;
+        User::create($attributes);
+
+        dd($attributes);
     }
 
     public static function delete()
