@@ -3,7 +3,7 @@
 namespace Core;
 
 use Libs\Singleton;
-use Libs\Arr;
+use Helpers\Arr;
 
 class Database extends Singleton
 {

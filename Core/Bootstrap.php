@@ -2,7 +2,10 @@
 namespace Core;
 use Core\Router;
 use Core\HttpMethod;
+use Libs\File;
 
+
+// TODO: Check if there are a better way to do this
 include_once Config::get('app_path').'Routes/web.php';
 
 $path_info = $_SERVER['REQUEST_URI'];

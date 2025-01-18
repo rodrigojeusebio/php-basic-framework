@@ -1,8 +1,9 @@
 <?php
 namespace Core;
+require_once 'Libs/File.php';
 
 use Libs\Singleton;
-
+use Libs\File;
 
 final class Config extends Singleton
 {
@@ -10,23 +11,19 @@ final class Config extends Singleton
 
     public static function load_env(string $env_file)
     {
-        if (file_exists($env_file))
+        foreach (File::get_lines($env_file) as $line)
         {
-            $contents = explode("\n", file_get_contents($env_file));
-            $contents = array_map(fn($e) => explode('=', $e), $contents);
-
-            foreach ($contents as [$option, $value])
-            {
-                Config::set($option, $value);
-            }
-        }
-        else
-        {
-            throw new \Exception("Environment file does not exist");
+            [$option, $value] = explode('=', $line);
+            Config::set($option, $value);
         }
     }
 
-    public static function get(string $option): mixed
+    /**
+     * Summary of get
+     * @param string $option
+     * @return mixed
+     */
+    public static function get(string $option, mixed $default = null): mixed
     {
         $configs = self::get_instance()->configs;
 
@@ -35,9 +32,25 @@ final class Config extends Singleton
             return $configs[$option];
         }
 
+        if ($default)
+        {
+            return $default;
+        }
+
         return null;
     }
 
+    /**
+     * Get all defined config variables  
+     */
+    public static function all(): array
+    {
+        return self::get_instance()->configs;
+    }
+
+    /**
+     * Define a configuratino key-value pair  
+     */
     public static function set(string $option, mixed $value): void
     {
         self::get_instance()->configs[$option] = $value;
