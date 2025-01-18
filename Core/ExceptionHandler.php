@@ -1,24 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Core;
+
+use Exception;
+use Throwable;
 
 final class ExceptionHandler
 {
     /**
-     * Handle the thrown exception  
+     * Handle the thrown exception
      */
-    public static function handler(\Throwable $exception): void
+    public static function handler(Throwable $exception): void
     {
         echo $exception->getMessage();
-        die;
+        exit;
     }
 }
 
-class App_Exception extends \Exception
+final class App_Exception extends Exception
 {
     /**
      * Throw exception with the level for logging
-     * @param string{'critical','error','warning','info'} $level
+     *
+     * @param  'critical'|'error'|'warning'|'info'  $level
+     * @param  null|string|array<string,mixed>  $extra
      */
     public function __construct(
         public string $level,

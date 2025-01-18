@@ -1,39 +1,39 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Core;
+
 require_once 'Libs/File.php';
 
-use Libs\Singleton;
 use Libs\File;
+use Libs\Singleton;
 
 final class Config extends Singleton
 {
+    /** @var array<string,string> */
     private array $configs = [];
 
-    public static function load_env(string $env_file)
+    public static function load_env(string $env_file): void
     {
-        foreach (File::get_lines($env_file) as $line)
-        {
+        foreach (File::get_lines($env_file) as $line) {
             [$option, $value] = explode('=', $line);
-            Config::set($option, $value);
+            self::set($option, $value);
         }
     }
 
     /**
      * Summary of get
-     * @param string $option
-     * @return mixed
      */
-    public static function get(string $option, mixed $default = null): mixed
+    public static function get(string $option, ?string $default = null): ?string
     {
         $configs = self::get_instance()->configs;
 
-        if (isset($configs[$option]))
-        {
+        if (isset($configs[$option])) {
             return $configs[$option];
         }
 
-        if ($default)
-        {
+        if ($default) {
             return $default;
         }
 
@@ -41,7 +41,9 @@ final class Config extends Singleton
     }
 
     /**
-     * Get all defined config variables  
+     * Get all defined config variables
+     *
+     * @return array<string,string>
      */
     public static function all(): array
     {
@@ -49,9 +51,9 @@ final class Config extends Singleton
     }
 
     /**
-     * Define a configuratino key-value pair  
+     * Define a configuratino key-value pair
      */
-    public static function set(string $option, mixed $value): void
+    public static function set(string $option, string $value): void
     {
         self::get_instance()->configs[$option] = $value;
     }

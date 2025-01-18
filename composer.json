@@ -13,5 +13,13 @@
             "email": "rodrigojeusebio@gmail.com"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpstan/phpstan": "^2.1"
+    },
+    "scripts": {
+        "phpstan": "vendor/bin/phpstan analyse"
+    },
+    "require": {
+        "laravel/pint": "^1.20"
+    }
 }

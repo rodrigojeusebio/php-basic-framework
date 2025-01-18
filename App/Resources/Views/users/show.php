@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var string $user_name
+ * @var string $user_id
+ */
+?>
 <h1>Hello <?= $user_name ?></h1>
 
 

@@ -1,45 +1,51 @@
 <?php
 
+declare(strict_types=1);
+
 use Core\Config;
 
-function style_key($key)
+function style_key(string $key): string
 {
     return "<span style=\"color: green; font-weight: bold\">$key</span>";
 }
 
-function style_value($value)
+function style_value(string $value): string
 {
     return "<span style=\"color: orange; \">$value</span>";
 }
-function d($value)
+/**
+ * @param  string|array<string|string>  $value
+ */
+function d(string|array $value): void
 {
 
     $message = '<div style="background-color: black; border: 2px solid orange; color: white; padding: 10px;"><code>';
-    $footer  = '</code></div>';
+    $footer = '</code></div>';
 
-    if (is_array($value))
-    {
-        foreach ($value as $k => $v)
-        {
+    if (is_array($value)) {
+        foreach ($value as $k => $v) {
             $message .= style_key($k).' => '.style_value($v).'<br>';
         }
-    }
-    else
-    {
-        $message .= style_value($value ?? 'null');
+    } else {
+        $message .= style_value($value ?: 'null');
     }
 
     $message .= $footer;
 
     echo $message;
 }
-function dd($value)
+/**
+ * Dump and die
+ *
+ * @param  string|array<string,string>  $value
+ */
+function dd(string|array $value): never
 {
     d($value);
-    die;
+    exit;
 }
 
-function get_app_path()
+function get_app_path(): ?string
 {
     return Config::get('app_path');
 }
