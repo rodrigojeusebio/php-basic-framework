@@ -27,10 +27,10 @@ final class Arr
      * @template Tvalue
      *
      * @param  array<Tvalue>  $array
-     * @return Tvalue is empty-array ? false : Tvalue
+     * @return Tvalue|false
      */
     public static function first_value(array &$array): mixed
     {
-        return reset($array);
+        return ! empty($array) ? reset($array) : false;
     }
 }

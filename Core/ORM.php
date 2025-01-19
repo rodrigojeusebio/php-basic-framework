@@ -35,13 +35,16 @@ abstract class ORM
             "SELECT * FROM $table_name WHERE `id` = $id LIMIT 1"
         );
 
-        if (empty($result)) {
-            throw new App_Exception('error', 'You do not have access to this resource or it does not exist', ['table_name' => static::$table_name, 'id' => $id]);
-        }
+        $result_row = Arr::first_value($result);
 
-        $orm = new static();
-        foreach (Arr::first_value($result) as $column => $value) {
-            $orm->$column = $value;
+        if (is_array($result_row)) {
+            $orm = new static();
+
+            foreach ($result_row as $column => $value) {
+                $orm->$column = $value;
+            }
+        } else {
+            throw new App_Exception('error', 'You do not have access to this resource or it does not exist', ['table_name' => static::$table_name, 'id' => $id]);
         }
 
         return $orm;

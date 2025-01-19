@@ -34,12 +34,16 @@ final class ExceptionHandler
             $level = 'system';
         }
 
-        Render::view('default_pages/ExceptionViewer', [
-            'level' => $level,
-            'message' => $message,
-            'extra' => $extra,
-            'stack_trace' => $stack_trace,
-        ]);
+        if (Config::get('env') !== 'production') {
+            Render::view('default_pages/ExceptionViewer', [
+                'level' => $level,
+                'message' => $message,
+                'extra' => $extra,
+                'stack_trace' => $stack_trace,
+            ]);
+        } else {
+            Render::view('default_pages/500');
+        }
     }
 
     // /**
