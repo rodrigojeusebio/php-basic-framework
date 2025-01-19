@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
+use App\Controllers\Controller;
 use App\Controllers\User_Controller;
 use Core\Router;
+
+Router::get('/', Controller::class, 'home');
 
 Router::get('/users/create', User_Controller::class, 'create');
 Router::get('/users/{:id}', User_Controller::class, 'show');

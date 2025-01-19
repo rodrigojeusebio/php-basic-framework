@@ -17,7 +17,7 @@ function style_value(string $value): string
 function d(mixed $value): void
 {
     $message = '<div style="background-color: black; border: 2px solid orange; color: white; padding: 10px;"><code><pre>';
-    $footer  = '</pre></code></div>';
+    $footer = '</pre></code></div>';
 
     $message .= json_encode($value, JSON_PRETTY_PRINT);
 
@@ -50,8 +50,7 @@ function get_base_path(): ?string
  */
 function get_val(array $array, string|int $key, mixed $default = null): mixed
 {
-    if (array_key_exists($key, $array))
-    {
+    if (array_key_exists($key, $array)) {
         return $array[$key];
     }
 
