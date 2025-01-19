@@ -13,22 +13,13 @@ function style_value(string $value): string
 {
     return "<span style=\"color: orange; \">$value</span>";
 }
-/**
- * @param  string|array<string|string>  $value
- */
-function d(string|array $value): void
+
+function d(mixed $value): void
 {
+    $message = '<div style="background-color: black; border: 2px solid orange; color: white; padding: 10px;"><code><pre>';
+    $footer  = '</pre></code></div>';
 
-    $message = '<div style="background-color: black; border: 2px solid orange; color: white; padding: 10px;"><code>';
-    $footer = '</code></div>';
-
-    if (is_array($value)) {
-        foreach ($value as $k => $v) {
-            $message .= style_key($k).' => '.style_value($v).'<br>';
-        }
-    } else {
-        $message .= style_value($value ?: 'null');
-    }
+    $message .= json_encode($value, JSON_PRETTY_PRINT);
 
     $message .= $footer;
 
@@ -57,9 +48,10 @@ function get_base_path(): ?string
 /**
  * @param  array<string,mixed>  $array
  */
-function get_val(array $array, string $key, mixed $default = null): mixed
+function get_val(array $array, string|int $key, mixed $default = null): mixed
 {
-    if (array_key_exists($key, $array)) {
+    if (array_key_exists($key, $array))
+    {
         return $array[$key];
     }
 

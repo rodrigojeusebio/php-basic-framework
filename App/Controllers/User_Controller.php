@@ -18,10 +18,7 @@ final class User_Controller
 
     public static function show(int $user_id): never
     {
-        $user = User::find(1);
-
-        d($user->username);
-
+        $user = User::find($user_id);
         // $d = Database::get();
 
         // var_dump($d
@@ -29,7 +26,7 @@ final class User_Controller
         //     ->where('id', '=', '1')
         //     ->find());
 
-        Render::view('users/show', ['user_name' => 'Rodrigo', 'user_id' => $user_id]);
+        Render::view('users/show', ['user_name' => $user->name, 'user_id' => $user_id]);
     }
 
     public static function create(): never

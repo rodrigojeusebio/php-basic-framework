@@ -452,3 +452,35 @@ ain}
 #2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
 #3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
 #4 {main}
+2025-01-19 12:25:36 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 12:46:35 | ERROR | foreach() argument must be of type array|object, false given | {"errno":2} | #0 /home/reusebio/php-basic-framework/Core/ORM.php(38): Core\ErrorHandler::handler(2, 'foreach() argum...', '/home/reusebio/...', 38)
+#1 /home/reusebio/php-basic-framework/App/Controllers/User_Controller.php(21): Core\ORM::find(3)
+#2 [internal function]: App\Controllers\User_Controller::show(3)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array, '3')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/users/3', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#6 {main}
+2025-01-19 12:47:08 | ERROR | foreach() argument must be of type array|object, false given | {"errno":2} | #0 /home/reusebio/php-basic-framework/Core/ORM.php(38): Core\ErrorHandler::handler(2, 'foreach() argum...', '/home/reusebio/...', 38)
+#1 /home/reusebio/php-basic-framework/App/Controllers/User_Controller.php(21): Core\ORM::find(3)
+#2 [internal function]: App\Controllers\User_Controller::show(3)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array, '3')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/users/3', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#6 {main}
+2025-01-19 12:47:12 | ERROR | foreach() argument must be of type array|object, false given | {"errno":2} | #0 /home/reusebio/php-basic-framework/Core/ORM.php(38): Core\ErrorHandler::handler(2, 'foreach() argum...', '/home/reusebio/...', 38)
+#1 /home/reusebio/php-basic-framework/App/Controllers/User_Controller.php(21): Core\ORM::find(2)
+#2 [internal function]: App\Controllers\User_Controller::show(2)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array, '2')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/users/2', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#6 {main}
+2025-01-19 12:49:06 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":2} | #0 /home/reusebio/php-basic-framework/App/Controllers/User_Controller.php(21): Core\ORM::find(2)
+#1 [internal function]: App\Controllers\User_Controller::show(2)
+#2 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array, '2')
+#3 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/users/2', Object(Core\HttpMethod))
+#4 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#5 {main}

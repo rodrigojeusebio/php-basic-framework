@@ -4,7 +4,7 @@
  * @var string $user_id
  */
 ?>
-<h1>Hello <?= $user_name ?></h1>
+<h1>Hello <?= $user_name ?> (<?= $user_id ?>)</h1>
 
 
 <h3>Delete user</h3>
