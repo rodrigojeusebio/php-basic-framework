@@ -1,3 +1,324 @@
 2025-01-19 12:01 | Error | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} 
 2025-01-19 12:01 | Error | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} 
 2025-01-19 12:01 | Error | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} 
+2025-01-19 10:01 | Error | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 10:01 | Error | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 10:01 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 10:41:59 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+ain}
+2025-01-19 10:46:13 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 10:57:16 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 10:57:53 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 10:59:19 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 10:59:53 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:00:11 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:00:24 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:00:50 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:00:51 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:01:53 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:02:34 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:03:01 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:03:38 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:03:39 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:03:59 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:04:15 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:05:44 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:06:46 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:07:13 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:07:14 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:07:28 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:07:29 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:08:50 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:09:23 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:09:46 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:09:56 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:10:33 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:10:44 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:10:45 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:10:50 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:10:50 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:11:10 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:11:11 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:11:12 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:11:13 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:11:20 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:12:06 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:12:24 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:12:38 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:12:47 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:13:00 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:13:06 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:13:51 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:13:56 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:14:50 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:15:14 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:15:35 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:15:45 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:15:52 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:15:59 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:16:27 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:16:50 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:17:00 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:17:17 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:17:26 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:17:35 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:18:17 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:19:01 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:19:18 | ERROR | This is a test to log | [] | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}
+2025-01-19 11:19:25 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(19): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#4 {main}

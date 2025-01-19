@@ -18,7 +18,20 @@ final class ExceptionHandler
     {
         if ($exception instanceof App_Exception)
         {
-            Logger::log($exception->level, $exception->getMessage(), $exception->extra);
+            Logger::log(
+                $exception->level,
+                $exception->getMessage(),
+                $exception->extra,
+                $exception->getTraceAsString()
+            );
+
+            Render::view('default_pages/ExceptionViewer', [
+                'level'       => $exception->level,
+                'message'     => $exception->getMessage(),
+                'extra'       => $exception->extra,
+                'stack_trace' => $exception->getTraceAsString(),
+            ]);
+
         }
     }
 }

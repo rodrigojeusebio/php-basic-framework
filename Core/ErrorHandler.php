@@ -12,6 +12,6 @@ final class ErrorHandler
         ?string $errfile = null,
         ?int $errline = null,
     ): bool {
-        throw new App_Exception('error', $errstr, (string) $errno);
+        throw new App_Exception('error', $errstr, ['errno' => $errno]);
     }
 }

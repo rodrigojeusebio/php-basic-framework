@@ -14,12 +14,12 @@ final class Logger extends Singleton
     /**
      * @param string|array<string,string> $extra
      */
-    public static function log(string $level, string $message, string|array $extra): void
+    public static function log(string $level, string $message, string|array $extra, string $stack_trace): void
     {
-        $now                           = date('Y-m-d h:m');
-        $level                         = ucwords($level);
+        $now                           = date('Y-m-d G:i:s');
+        $level                         = strtoupper($level);
         $extra                         = json_encode($extra);
-        static::get_instance()->logs[] = "$now | $level | $message | $extra\n";
+        static::get_instance()->logs[] = mb_convert_encoding("$now | $level | $message | $extra | $stack_trace\n", 'ASCII');
 
     }
 
