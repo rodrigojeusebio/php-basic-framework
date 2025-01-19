@@ -484,3 +484,15 @@ ain}
 #3 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/users/2', Object(Core\HttpMethod))
 #4 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
 #5 {main}
+2025-01-19 14:21:07 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":2} | #0 /home/reusebio/php-basic-framework/App/Controllers/User_Controller.php(21): Core\ORM::find(2)
+#1 [internal function]: App\Controllers\User_Controller::show(2)
+#2 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array, '2')
+#3 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/users/2', Object(Core\HttpMethod))
+#4 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#5 {main}
+2025-01-19 14:21:36 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":2} | #0 /home/reusebio/php-basic-framework/App/Controllers/User_Controller.php(21): Core\ORM::find(2)
+#1 [internal function]: App\Controllers\User_Controller::show(2)
+#2 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array, '2')
+#3 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/users/2', Object(Core\HttpMethod))
+#4 /home/reusebio/php-basic-framework/index.php(29): require('/home/reusebio/...')
+#5 {main}
