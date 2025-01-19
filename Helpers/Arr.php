@@ -11,12 +11,13 @@ final class Arr
      *
      * @template Tvalue
      *
-     * @param  Tvalue|array<Tvalue>  $value
+     * @param  Tvalue|array<Tvalue>|array  $value
      * @return (Tvalue is array ? Tvalue : array<Tvalue>)
      */
     public static function wrap(mixed $value): array
     {
-        if (! is_array($value)) {
+        if (! is_array($value))
+        {
             $value = [$value];
         }
 

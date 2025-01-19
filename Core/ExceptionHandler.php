@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Core;
 
 use Exception;
+use Core\Logger;
+use Helpers\Arr;
 use Throwable;
 
 final class ExceptionHandler
@@ -14,24 +16,30 @@ final class ExceptionHandler
      */
     public static function handler(Throwable $exception): void
     {
-        echo $exception->getMessage();
-        exit;
+        if ($exception instanceof App_Exception)
+        {
+            Logger::log($exception->level, $exception->getMessage(), $exception->extra);
+        }
     }
 }
 
 final class App_Exception extends Exception
 {
+    /** @var array<string, mixed> */
+    public array $extra;
+
     /**
      * Throw exception with the level for logging
      *
      * @param  'critical'|'error'|'warning'|'info'  $level
-     * @param  null|string|array<string,mixed>  $extra
+     * @param  array<string,mixed>  $extra
      */
     public function __construct(
         public string $level,
         string $message,
-        public string|array|null $extra = null
+        string|array $extra = []
     ) {
+        $this->extra = Arr::wrap($extra);
         parent::__construct($message, 0, null);
     }
 }

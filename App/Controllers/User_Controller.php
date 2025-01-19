@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Models\User;
+use Core\App_Exception;
 use Core\Database;
 use Core\Render;
 
@@ -12,7 +13,7 @@ final class User_Controller
 {
     public static function index(): never
     {
-        dd('users list all');
+        throw new App_Exception('error', 'This is a test to log', ['name' => 'Rodrigo Eusébio', 'age' => 25]);
     }
 
     public static function show(int $user_id): never

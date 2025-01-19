@@ -15,9 +15,5 @@ $path_info = $_SERVER['REQUEST_URI'];
 /** @var string */
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
-try {
-    $method = HttpMethod::from(mb_strtoupper($method));
-    Router::route($path_info, $method);
-} catch (Exception $e) {
-    d($e->getMessage());
-}
+$method = HttpMethod::from(mb_strtoupper($method));
+Router::route($path_info, $method);
