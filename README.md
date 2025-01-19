@@ -6,6 +6,9 @@
 php -S localhost:8000
 ```
 
+### Home page
+![Home page](./images/HomePage.png)
+
 ### 404 - Not Found
 ![404 - Not Found](./images/404.png)
 
