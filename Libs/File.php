@@ -16,27 +16,23 @@ final class File
      */
     public static function get_lines(string $file_path): Generator
     {
-        if (! file_exists($file_path))
-        {
+        if (! file_exists($file_path)) {
             throw new Exception("File does not exist ($file_path)");
         }
 
         /** @var resource $f */
         $f = fopen($file_path, 'r');
-        try
-        {
-            while ($line = fgets($f))
-            {
+        try {
+            while ($line = fgets($f)) {
                 yield $line;
             }
-        } finally
-        {
+        } finally {
             fclose($f);
         }
     }
 
     /**
-     * @param array<string> $lines
+     * @param  array<string>  $lines
      */
     public static function write_lines(string $file_path, array $lines): void
     {

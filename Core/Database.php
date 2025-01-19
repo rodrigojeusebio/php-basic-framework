@@ -143,7 +143,7 @@ final class Database extends Singleton
             $sql .= ' WHERE ';
             $total_where = count($this->wheres);
             foreach ($this->wheres as $index => $where_values) {
-                $add_and = $index !== 0 || $index === $total_where;
+                $add_and = $index !== 0 || $index === $total_where - 1;
                 $sql .= ($add_and ? ' AND ' : ' ').implode(' ', $where_values);
             }
         }

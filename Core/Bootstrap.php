@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Core;
 
-use Exception;
-
 // TODO: Check if there are a better way to do this
 include_once Config::get('app_path').'Routes/web.php';
 

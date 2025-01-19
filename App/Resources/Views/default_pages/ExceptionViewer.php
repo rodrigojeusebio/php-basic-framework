@@ -54,12 +54,12 @@
                     <h2 class="text-xl font-semibold text-error">Exception Message:</h2>
                     <p class="font-medium text-error-foreground"><?= htmlspecialchars($message) ?></p>
                 </div>
-                <? if ($extra): ?>
+                <?php if ($extra) { ?>
                     <div class="bg-card-foreground rounded-md p-4 my-4 font-mono text-sm overflow-auto border border-error">
                         <h3 class="text-lg font-semibold text-primary">Additional Info:</h3>
                         <pre class="whitespace-pre-wrap"><?= json_encode($extra, JSON_PRETTY_PRINT) ?></pre>
                     </div>
-                <? endif; ?>
+                <?php } ?>
                 <div class="bg-card-foreground rounded-md p-4 my-4 font-mono text-sm overflow-auto border border-error">
                     <h3 class="text-lg font-semibold text-primary">Stack Trace:</h3>
                     <pre class="whitespace-pre-wrap"><?= htmlspecialchars($stack_trace) ?></pre>
