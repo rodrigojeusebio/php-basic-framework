@@ -18,7 +18,7 @@
         "phpstan/phpstan": "^2.1"
     },
     "scripts": {
-        "fix": "vendor/bin/phpstan analyse & vendor/bin/pint"
+        "fix": "vendor/bin/phpstan analyse -c phpstan.neon & vendor/bin/pint"
     },
     "require": {
         "laravel/pint": "^1.20"

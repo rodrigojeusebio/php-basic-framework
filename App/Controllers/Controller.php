@@ -10,6 +10,6 @@ final class Controller
 {
     public static function home()
     {
-        Render::view('default_pages/home');
+        Render::page('default_pages/home');
     }
 }
