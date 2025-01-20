@@ -7,25 +7,6 @@
     <title>Exception Viewer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --background: 240 10% 98%;
-            --foreground: 240 10% 10%;
-            --card: 255 255 255;
-            --card-foreground: 240 10% 95%;
-            --primary: 0 123 255;
-            --primary-foreground: 255 255 255;
-            --error: 220 38 38;
-            /* Red for error messages */
-            --error-foreground: 255 255 255;
-            --border: 240 5.9% 90%;
-            --radius: 0.5rem;
-        }
-
-        img[src="/placeholder.svg"],
-        img[src="/placeholder-user.jpg"] {
-            filter: sepia(0.3) hue-rotate(-60deg) saturate(0.5) opacity(0.8);
-        }
-
         h1,
         h2,
         h3,

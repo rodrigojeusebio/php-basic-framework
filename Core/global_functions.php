@@ -27,10 +27,8 @@ function d(mixed $value): void
 }
 /**
  * Dump and die
- *
- * @param  string|array<string,string>  $value
  */
-function dd(string|array $value): never
+function dd(mixed $value): never
 {
     d($value);
     exit;

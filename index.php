@@ -25,5 +25,6 @@ Config::set('app_path', Config::get('base_path').'/App/');
 // Set global functions
 require_once dirname(__FILE__).'/Core/global_functions.php';
 
+ob_start();
 // Start framework
 require dirname(__FILE__).'/Core/Bootstrap.php';
