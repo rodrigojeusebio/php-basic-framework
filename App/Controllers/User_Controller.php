@@ -8,6 +8,7 @@ use App\Models\User;
 use Core\App_Exception;
 use Core\Database;
 use Core\Render;
+use Core\Request;
 
 final class User_Controller
 {
@@ -36,10 +37,10 @@ final class User_Controller
 
     public static function store(): never
     {
-        $attributes = $_POST;
-        User::create($attributes);
+        $attributes = Request::attributes();
+        $user = User::create($attributes);
 
-        dd($attributes);
+        Request::redirect("/users/$user->id");
     }
 
     public static function delete(): never

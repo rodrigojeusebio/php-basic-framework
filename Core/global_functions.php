@@ -16,14 +16,12 @@ function style_value(string $value): string
 
 function d(mixed $value): void
 {
-    $message = '<div style="background-color: black; border: 2px solid orange; color: white; padding: 10px;"><code><pre>';
-    $footer = '</pre></code></div>';
+    echo $message = '<div style="background-color: black; border: 2px solid orange; color: white; padding: 10px;"><pre>';
 
-    $message .= json_encode($value, JSON_PRETTY_PRINT);
+    var_dump($value);
 
-    $message .= $footer;
+    echo $footer = '</pre></div>';
 
-    echo $message;
 }
 /**
  * Dump and die

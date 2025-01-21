@@ -11,6 +11,8 @@ abstract class ORM
     /** @var array<string,mixed> */
     public array $attributes;
 
+    public int $id;
+
     public static string $table_name;
 
     final public function __construct()
@@ -55,7 +57,8 @@ abstract class ORM
      */
     final public static function create(array $values): void
     {
-        $result = Database::query("PRAGMA table_info('users');");
+        $table_name = static::$table_name;
+        $result = Database::query("PRAGMA table_info('$table_name');");
 
         $table_columns = [];
 
@@ -63,7 +66,9 @@ abstract class ORM
             $table_columns[] = $row['name'];
         }
 
+        /** @var array<string,int|string> $orm_values */
         $orm_values = [];
+
         foreach ($values as $key => $value) {
             if (in_array($key, $table_columns)) {
                 $orm_values[$key] = $value;
@@ -71,6 +76,33 @@ abstract class ORM
         }
 
         $d = Database::get();
-        $d->insert(static::$table_name, $orm_values);
+        $d->insert($table_name, $orm_values);
+    }
+
+    /**
+     * @param  array<string,mixed>  $values
+     */
+    final public function update(array $values): void
+    {
+        $table_name = static::$table_name;
+        $result = Database::query("PRAGMA table_info('$table_name');");
+
+        $table_columns = [];
+
+        foreach ($result as $row) {
+            $table_columns[] = $row['name'];
+        }
+
+        /** @var array<string,int|string> $orm_values */
+        $orm_values = [];
+
+        foreach ($values as $key => $value) {
+            if (in_array($key, $table_columns)) {
+                $orm_values[$key] = $value;
+            }
+        }
+
+        $d = Database::get();
+        $d->update($table_name, $orm_values, $this->id);
     }
 }

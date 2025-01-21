@@ -112,13 +112,26 @@ final class Database extends Singleton
     }
 
     /**
-     * @param  array<string,mixed>  $values
+     * @param  array<string,string|int>  $values
      */
     public function insert(string $table_name, array $values): void
     {
         $fields = implode(', ', array_keys($values));
+        $values = array_map(fn ($e) => "'$e'", $values);
         $values = implode(', ', $values);
         $sql = "INSERT INTO $table_name ($fields) VALUES ($values);";
+        $this->query($sql);
+    }
+
+    /**
+     * @param  array<string,string|int>  $values
+     */
+    public function update(string $table_name, array $values, int $id): void
+    {
+        $values = array_map(fn ($e) => "'$e'", $values);
+        $fields = array_map(fn ($k, $v) => "$k => $e", $values);
+        $update_statment = implode(', ', $fields);
+        $sql = "UPDATE $table_name SET ($fields) WHERE id = $id";
         $this->query($sql);
     }
 
