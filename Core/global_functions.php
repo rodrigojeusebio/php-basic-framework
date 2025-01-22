@@ -42,11 +42,12 @@ function get_base_path(): ?string
 }
 
 /**
- * @param  array<string,mixed>  $array
+ * @param  array<string,mixed>|array<mixed>  $array
  */
 function get_val(array $array, string|int $key, mixed $default = null): mixed
 {
-    if (array_key_exists($key, $array)) {
+    if (array_key_exists($key, $array))
+    {
         return $array[$key];
     }
 

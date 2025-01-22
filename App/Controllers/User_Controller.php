@@ -38,13 +38,12 @@ final class User_Controller
     public static function store(): never
     {
         $attributes = Request::attributes();
-        $user = User::create($attributes);
 
-        Request::redirect("/users/$user->id");
+        Request::redirect("/users/1");
     }
 
     public static function delete(): never
     {
-        dd('user deleted');
+        Request::redirect("/users");
     }
 }

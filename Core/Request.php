@@ -8,9 +8,10 @@ final class Request
 {
     public static function uri(): string
     {
-        $uri = $_SERVER['PATH_INFO'];
+        $uri = get_val($_SERVER, 'PATH_INFO', get_val($_SERVER, 'REQUEST_URI', '/'));
 
-        if (is_string($uri)) {
+        if (is_string($uri))
+        {
             return $uri;
         }
 
@@ -26,7 +27,8 @@ final class Request
     {
         $method = self::attributes()['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
-        if (is_string($method)) {
+        if (is_string($method))
+        {
             $method = HttpMethod::from(mb_strtoupper($method));
 
             return $method;
@@ -48,8 +50,10 @@ final class Request
     /**
      * Redirects the user to other page
      */
-    public static function redirect()
+    public static function redirect(string $url): never
     {
-        // TODO
+        ob_clean();
+        header("Location: $url");
+        exit;
     }
 }

@@ -734,3 +734,38 @@ ain}
 #3 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users/100', Object(Core\HttpMethod))
 #4 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
 #5 {main}
+2025-01-22 20:55:27 | ERROR | Undefined array key "PATH_INFO" | {"errno":2} | #0 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Request.php(11): Core\ErrorHandler::handler(2, 'Undefined array...', '/Users/rodrigoe...', 11)
+#1 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Request::uri()
+#2 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#3 {main}
+2025-01-22 20:55:33 | ERROR | Undefined array key "PATH_INFO" | {"errno":2} | #0 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Request.php(11): Core\ErrorHandler::handler(2, 'Undefined array...', '/Users/rodrigoe...', 11)
+#1 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Request::uri()
+#2 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#3 {main}
+2025-01-22 20:58:59 | ERROR | This is a test to log | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#4 {main}
+2025-01-22 20:59:37 | ERROR | Welcome to list all users | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#4 {main}
+2025-01-22 20:59:42 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":100} | #0 /Users/rodrigoeusebio/Herd/php-basic-framework/App/Controllers/User_Controller.php(22): Core\ORM::find(100)
+#1 [internal function]: App\Controllers\User_Controller::show(100)
+#2 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Router.php(71): call_user_func(Array, '100')
+#3 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users/100', Object(Core\HttpMethod))
+#4 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#5 {main}
+2025-01-22 20:59:44 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":100} | #0 /Users/rodrigoeusebio/Herd/php-basic-framework/App/Controllers/User_Controller.php(22): Core\ORM::find(100)
+#1 [internal function]: App\Controllers\User_Controller::show(100)
+#2 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Router.php(71): call_user_func(Array, '100')
+#3 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users/100', Object(Core\HttpMethod))
+#4 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#5 {main}
+2025-01-22 20:59:51 | ERROR | Welcome to list all users | {"name":"Rodrigo Eus\u00e9bio","age":25} | #0 [internal function]: App\Controllers\User_Controller::index()
+#1 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#2 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users', Object(Core\HttpMethod))
+#3 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#4 {main}
