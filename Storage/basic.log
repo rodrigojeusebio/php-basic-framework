@@ -769,3 +769,29 @@ ain}
 #2 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users', Object(Core\HttpMethod))
 #3 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
 #4 {main}
+2025-01-24 6:31:31 | ERROR | Undefined variable $user | {"errno":2} | #0 /Users/rodrigoeusebio/Herd/php-basic-framework/App/Resources/Views/users/edit.php(3): Core\ErrorHandler::handler(2, 'Undefined varia...', '/Users/rodrigoe...', 3)
+#1 /Users/rodrigoeusebio/Herd/php-basic-framework/App/Resources/Views/layouts/default.php(32): include('/Users/rodrigoe...')
+#2 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Render.php(30): include_once('/Users/rodrigoe...')
+#3 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Render.php(19): Core\Render::page('layouts/default', Array)
+#4 /Users/rodrigoeusebio/Herd/php-basic-framework/App/Controllers/User_Controller.php(42): Core\Render::view('users/edit', Array)
+#5 [internal function]: App\Controllers\User_Controller::edit(5)
+#6 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Router.php(71): call_user_func(Array, '5')
+#7 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users/5/edit', Object(Core\HttpMethod))
+#8 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#9 {main}
+2025-01-24 6:37:56 | ERROR | compact(): Undefined variable $App\Controllers\User_Controller | {"errno":2} | #0 [internal function]: Core\ErrorHandler::handler(2, 'compact(): Unde...', '/Users/rodrigoe...', 68)
+#1 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Router.php(68): compact('App\\Controllers...', 'update')
+#2 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users/1', Object(Core\HttpMethod))
+#3 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#4 {main}
+2025-01-24 6:38:08 | ERROR | compact(): Undefined variable $App\Controllers\User_Controller | {"errno":2} | #0 [internal function]: Core\ErrorHandler::handler(2, 'compact(): Unde...', '/Users/rodrigoe...', 68)
+#1 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Router.php(68): compact('App\\Controllers...', 'update')
+#2 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users/1', Object(Core\HttpMethod))
+#3 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#4 {main}
+2025-01-24 6:38:28 | ERROR | Method does not exist in class App\Controllers\User_Controller | {"class":"App\\Controllers\\User_Controller"} | #0 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users/1', Object(Core\HttpMethod))
+#1 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#2 {main}
+2025-01-24 6:38:38 | ERROR | Method does not exist in class App\Controllers\User_Controller | {"class":"App\\Controllers\\User_Controller","function":"update"} | #0 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users/1', Object(Core\HttpMethod))
+#1 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
+#2 {main}

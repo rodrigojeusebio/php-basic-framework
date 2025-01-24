@@ -10,8 +10,7 @@ final class Request
     {
         $uri = get_val($_SERVER, 'PATH_INFO', get_val($_SERVER, 'REQUEST_URI', '/'));
 
-        if (is_string($uri))
-        {
+        if (is_string($uri)) {
             return $uri;
         }
 
@@ -27,8 +26,7 @@ final class Request
     {
         $method = self::attributes()['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
-        if (is_string($method))
-        {
+        if (is_string($method)) {
             $method = HttpMethod::from(mb_strtoupper($method));
 
             return $method;

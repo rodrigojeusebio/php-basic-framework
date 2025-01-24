@@ -55,7 +55,7 @@ abstract class ORM
     /**
      * @param  array<string,mixed>  $values
      */
-    final public static function create(array $values): void
+    final public static function create(array $values): static
     {
         $table_name = static::$table_name;
         $result = Database::query("PRAGMA table_info('$table_name');");
@@ -77,6 +77,10 @@ abstract class ORM
 
         $d = Database::get();
         $d->insert($table_name, $orm_values);
+
+        $id = $d->get_last_id();
+
+        return static::find($id);
     }
 
     /**

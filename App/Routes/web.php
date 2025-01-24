@@ -10,6 +10,8 @@ Router::get('/', Controller::class, 'home');
 
 Router::get('/users/create', User_Controller::class, 'create');
 Router::get('/users/{:id}', User_Controller::class, 'show');
+Router::patch('/users/{:id}', User_Controller::class, 'update');
+Router::get('/users/{:id}/edit', User_Controller::class, 'edit');
 Router::delete('/users/{:id}', User_Controller::class, 'delete');
 Router::get('/users', User_Controller::class, 'index');
 Router::post('/users', User_Controller::class, 'store');

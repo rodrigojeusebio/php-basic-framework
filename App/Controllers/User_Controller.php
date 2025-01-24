@@ -35,15 +35,35 @@ final class User_Controller
         Render::view('users/create', []);
     }
 
+    public static function edit(int $id): never
+    {
+        $user = User::find($id);
+
+        Render::view('users/edit', ['user' => $user]);
+    }
+
     public static function store(): never
     {
         $attributes = Request::attributes();
 
-        Request::redirect("/users/1");
+        $user = User::create($attributes);
+
+        Request::redirect("/users/$user->id");
+    }
+
+    public static function update(int $id): never
+    {
+        $attributes = Request::attributes();
+
+        $user = User::find($id);
+
+        $user->update($attributes);
+
+        Request::redirect("/users/$user->id");
     }
 
     public static function delete(): never
     {
-        Request::redirect("/users");
+        Request::redirect('/users');
     }
 }

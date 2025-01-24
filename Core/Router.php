@@ -62,7 +62,7 @@ final class Router extends Singleton
                 throw new Exception("Class '$class' does not exist");
             }
             if (! method_exists($class, $function)) {
-                throw new Exception("Method does not exist in class $class");
+                throw new App_Exception('error', "Method does not exist in class $class", ['class' => $class, 'function' => $function]);
             }
 
             /** @var callable(): mixed */

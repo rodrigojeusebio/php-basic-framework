@@ -53,6 +53,27 @@ final class Database extends Singleton
     }
 
     /**
+     * @param  array<string,mixed>  $attributes
+     * @return array<array<string,mixed>>
+     */
+    public function prepared_query(string $query, array $attributes): array
+    {
+        $result = [];
+
+        $query = $this->database->prepare($query);
+        $query->execute($attributes);
+
+        if ($query) {
+            /**
+             * @var array<array<string,mixed>>
+             */
+            $result = $query->fetchAll(mode: PDO::FETCH_ASSOC);
+        }
+
+        return $result;
+    }
+
+    /**
      * @param  string|array<string>  $value
      */
     public function select(string|array $value): self
@@ -112,27 +133,33 @@ final class Database extends Singleton
     }
 
     /**
-     * @param  array<string,string|int>  $values
+     * @param  array<string,mixed>  $attributes
      */
-    public function insert(string $table_name, array $values): void
+    public function insert(string $table_name, array $attributes): void
     {
-        $fields = implode(', ', array_keys($values));
-        $values = array_map(fn ($e) => "'$e'", $values);
-        $values = implode(', ', $values);
+        $fields = implode(', ', array_keys($attributes));
+        $values = array_map(fn ($e) => '?', $attributes);
+        $values = implode(', ', $attributes);
         $sql = "INSERT INTO $table_name ($fields) VALUES ($values);";
-        $this->query($sql);
+        $this->prepared_query($sql, $attributes);
     }
 
     /**
-     * @param  array<string,string|int>  $values
+     * @param  array<string,mixed>  $values
      */
     public function update(string $table_name, array $values, int $id): void
     {
-        $values = array_map(fn ($e) => "'$e'", $values);
-        $fields = array_map(fn ($k, $v) => "$k => $e", $values);
+        $fields = array_map(fn ($k) => "$k = :$k", array_keys($values));
+
         $update_statment = implode(', ', $fields);
-        $sql = "UPDATE $table_name SET ($fields) WHERE id = $id";
-        $this->query($sql);
+        $sql = "UPDATE $table_name SET $update_statment WHERE id = $id";
+
+        $this->prepared_query($sql, $values);
+    }
+
+    public function get_last_id(): int
+    {
+        return (int) $this->database->lastInsertId();
     }
 
     private function build_query(): string
