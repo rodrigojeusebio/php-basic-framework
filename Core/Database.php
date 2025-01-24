@@ -138,8 +138,8 @@ final class Database extends Singleton
     public function insert(string $table_name, array $attributes): void
     {
         $fields = implode(', ', array_keys($attributes));
-        $values = array_map(fn ($e) => '?', $attributes);
-        $values = implode(', ', $attributes);
+        $values = array_map(fn ($k) => ":$k", array_keys($attributes));
+        $values = implode(', ', $values);
         $sql = "INSERT INTO $table_name ($fields) VALUES ($values);";
         $this->prepared_query($sql, $attributes);
     }
