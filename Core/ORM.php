@@ -15,9 +15,12 @@ abstract class ORM
 
     public static string $table_name;
 
+    public Database $database;
+
     final public function __construct()
     {
         $this->attributes = [];
+        $this->database = Database::get();
     }
 
     public function __get(string $attribute): mixed
@@ -30,12 +33,12 @@ abstract class ORM
         $this->attributes[$name] = $value;
     }
 
-    final public static function __callStatic(string $method, mixed $args): mixed
+    final public function __call(string $method, mixed $args): mixed
     {
-        if (method_exists(self::class, $method)) {
-            $orm = new static();
+        if (method_exists(Database::class, $method)) {
+            $this->database->$method(...$args);
 
-            return $orm->$method(...$args);
+            return $this;
         }
 
         throw new App_Exception('error', 'Method does not exist', [
@@ -44,30 +47,23 @@ abstract class ORM
         ]);
     }
 
-    final public static function find(int $id): static
+    final public static function __callStatic(string $method, mixed $args): mixed
     {
-        $table_name = static::$table_name;
-        $result = Database::query(
-            "SELECT * FROM $table_name WHERE `id` = $id LIMIT 1"
-        );
-
-        $result_row = Arr::first_value($result);
-
-        if (is_array($result_row)) {
+        if (method_exists(Database::class, $method)) {
             $orm = new static();
+            $orm->database->$method(...$args);
 
-            foreach ($result_row as $column => $value) {
-                $orm->$column = $value;
-            }
-        } else {
-            throw new App_Exception('error', 'You do not have access to this resource or it does not exist', ['table_name' => static::$table_name, 'id' => $id]);
+            return $orm;
         }
 
-        return $orm;
+        throw new App_Exception('error', 'Method does not exist', [
+            'class' => self::class,
+            'method' => $method,
+        ]);
     }
 
     /**
-     * @param  array<string,mixed>  $values
+     * @param  array<string,string|int>  $values
      */
     final public static function create(array $values): static
     {
@@ -97,15 +93,40 @@ abstract class ORM
         return static::find($id);
     }
 
+    final public static function find(int $id): static
+    {
+        $orm = new static;
+        $result = $orm->database
+            ->from(static::$table_name)
+            ->where('id', '=', $id)
+            ->find();
+
+        $result_row = Arr::first_value($result);
+
+        if (is_array($result_row)) {
+            $orm = new static();
+
+            foreach ($result_row as $column => $value) {
+                $orm->$column = $value;
+            }
+        } else {
+            throw new App_Exception('error', 'You do not have access to this resource or it does not exist', ['table_name' => static::$table_name, 'id' => $id]);
+        }
+
+        return $orm;
+    }
+
     /**
      * @return static[]
      */
-    final public function all(): array
+    final public static function all(): array
     {
+        $orm = new static;
         $table_name = static::$table_name;
-        $result = Database::query(
-            "SELECT * FROM $table_name"
-        );
+
+        $result = $orm->database
+            ->from($table_name)
+            ->find_all();
 
         $array_all = [];
 
@@ -124,7 +145,7 @@ abstract class ORM
     }
 
     /**
-     * @param  array<string,mixed>  $values
+     * @param  array<string,string|int>  $values
      */
     final public function update(array $values): void
     {
@@ -146,7 +167,7 @@ abstract class ORM
             }
         }
 
-        $d = Database::get();
-        $d->update($table_name, $orm_values, $this->id);
+        $this->database = Database::get();
+        $this->database->update($table_name, $orm_values, $this->id);
     }
 }

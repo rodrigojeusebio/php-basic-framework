@@ -15,7 +15,7 @@ final class Database extends Singleton
     /** @var array<string> */
     public array $select = [];
 
-    /** @var array<int,array<string>> */
+    /** @var array<array{column:string,operator:string,value:string|int}> */
     public array $wheres = [];
 
     /** @var array<array{join_type:'left'|'inner',table_name:string,key_1:string,key_2:string}> */
@@ -26,7 +26,13 @@ final class Database extends Singleton
     public function __construct()
     {
         $path = Config::get('base_path').'Database/'.Config::get('database');
-        $this->database = new PDO('sqlite:'.$path, null, null);
+        $this->database = new PDO(
+            'sqlite:'.$path,
+            null,
+            null,
+            ['fetchMode' => PDO::FETCH_ASSOC]
+        );
+
     }
 
     public static function get(): static
@@ -53,10 +59,10 @@ final class Database extends Singleton
     }
 
     /**
-     * @param  array<string,mixed>  $attributes
+     * @param  array<string|int>  $attributes
      * @return array<array<string,mixed>>
      */
-    public function prepared_query(string $query, array $attributes): array
+    public function prepared_query(string $query, array $attributes = []): array
     {
         $result = [];
 
@@ -94,9 +100,13 @@ final class Database extends Singleton
         return $this;
     }
 
-    public function where(string $column, string $operator, string $value): self
+    public function where(string $column, string $operator, string|int $value): self
     {
-        $this->wheres[] = [$column, $operator, $value];
+        $this->wheres[] = [
+            'column' => $column,
+            'operator' => $operator,
+            'value' => $value,
+        ];
 
         return $this;
     }
@@ -121,19 +131,24 @@ final class Database extends Singleton
      */
     public function find(): array
     {
-        $sql = $this->build_query();
+        [$sql, $attributes] = $this->build_query();
         $sql .= ' LIMIT 1';
 
-        return $this::query($sql);
-    }
-
-    public function find_all(): void
-    {
-        $sql = $this->build_query();
+        return $this->prepared_query($sql, $attributes);
     }
 
     /**
-     * @param  array<string,mixed>  $attributes
+     * @return array<array<string,mixed>>
+     */
+    public function find_all(): array
+    {
+        [$sql, $attributes] = $this->build_query();
+
+        return $this->prepared_query($sql, $attributes);
+    }
+
+    /**
+     * @param  array<string,string|int>  $attributes
      */
     public function insert(string $table_name, array $attributes): void
     {
@@ -145,7 +160,7 @@ final class Database extends Singleton
     }
 
     /**
-     * @param  array<string,mixed>  $values
+     * @param  array<string,string|int>  $values
      */
     public function update(string $table_name, array $values, int $id): void
     {
@@ -162,11 +177,18 @@ final class Database extends Singleton
         return (int) $this->database->lastInsertId();
     }
 
-    private function build_query(): string
+    /**
+     * @return array{non-falsy-string, list<string|int>}
+     */
+    private function build_query(): array
     {
         $sql = 'SELECT ';
+        $attributes = $this->select ? [...array_values($this->select)] : [];
+
+        $values = array_map(fn () => '?', $this->select);
+
         if ($this->select) {
-            $sql .= implode(', ', $this->select).' ';
+            $sql .= implode(', ', $values).' ';
         } else {
             $sql .= '* ';
         }
@@ -183,11 +205,12 @@ final class Database extends Singleton
             $sql .= ' WHERE ';
             $total_where = count($this->wheres);
             foreach ($this->wheres as $index => $where_values) {
-                $add_and = $index !== 0 || $index === $total_where - 1;
-                $sql .= ($add_and ? ' AND ' : ' ').implode(' ', $where_values);
+                $add_and = $index > 0 && $index <= $total_where - 1;
+                $sql .= ($add_and ? ' AND ' : ' ').$where_values['column'].' '.$where_values['operator'].' ?';
+                $attributes[] = $where_values['value'];
             }
         }
 
-        return $sql;
+        return [$sql, $attributes];
     }
 }

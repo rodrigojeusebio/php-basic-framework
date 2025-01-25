@@ -12,7 +12,7 @@ final class User_Controller
 {
     public static function index(): never
     {
-        $users = User::all();
+        $users = User::where('name', '=', 'Rodrigo')->all();
 
         Render::view('users/index', ['users' => $users]);
     }
