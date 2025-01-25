@@ -53,6 +53,32 @@ abstract class ORM
     }
 
     /**
+     * @return static[]
+     */
+    final public static function all(): array
+    {
+        $table_name = static::$table_name;
+        $result = Database::query(
+            "SELECT * FROM $table_name"
+        );
+
+        $array_all = [];
+
+        foreach ($result as $result_row) {
+
+            $orm = new static();
+
+            foreach ($result_row as $column => $value) {
+                $orm->$column = $value;
+            }
+
+            $array_all[] = $orm;
+        }
+
+        return $array_all;
+    }
+
+    /**
      * @param  array<string,mixed>  $values
      */
     final public static function create(array $values): static

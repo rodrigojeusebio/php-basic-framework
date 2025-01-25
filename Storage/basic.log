@@ -795,3 +795,13 @@ ain}
 2025-01-24 6:38:38 | ERROR | Method does not exist in class App\Controllers\User_Controller | {"class":"App\\Controllers\\User_Controller","function":"update"} | #0 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users/1', Object(Core\HttpMethod))
 #1 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
 #2 {main}
+2025-01-25 7:48:55 | ERROR | Undefined variable $user_name | {"errno":2} | #0 /home/reusebio/php-basic-framework/App/Resources/Views/users/show.php(1): Core\ErrorHandler::handler(2, 'Undefined varia...', '/home/reusebio/...', 1)
+#1 /home/reusebio/php-basic-framework/App/Resources/Views/layouts/default.php(32): include('/home/reusebio/...')
+#2 /home/reusebio/php-basic-framework/Core/Render.php(30): include_once('/home/reusebio/...')
+#3 /home/reusebio/php-basic-framework/Core/Render.php(19): Core\Render::page('layouts/default', Array)
+#4 /home/reusebio/php-basic-framework/App/Controllers/User_Controller.php(17): Core\Render::view('users/show', Array)
+#5 [internal function]: App\Controllers\User_Controller::index()
+#6 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#7 /home/reusebio/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users', Object(Core\HttpMethod))
+#8 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#9 {main}

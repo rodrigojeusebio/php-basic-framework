@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Models\User;
-use Core\App_Exception;
-use Core\Database;
 use Core\Render;
 use Core\Request;
 
@@ -14,18 +12,14 @@ final class User_Controller
 {
     public static function index(): never
     {
-        throw new App_Exception('error', 'This is a test to log', ['name' => 'Rodrigo Eusébio', 'age' => 25]);
+        $users = User::all();
+
+        Render::view('users/index', ['users' => $users]);
     }
 
     public static function show(int $user_id): never
     {
         $user = User::find($user_id);
-        // $d = Database::get();
-
-        // var_dump($d
-        //     ->from('users')
-        //     ->where('id', '=', '1')
-        //     ->find());
 
         Render::view('users/show', ['user_name' => $user->name, 'user_id' => $user_id]);
     }
