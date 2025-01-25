@@ -30,6 +30,20 @@ abstract class ORM
         $this->attributes[$name] = $value;
     }
 
+    final public static function __callStatic(string $method, mixed $args): mixed
+    {
+        if (method_exists(self::class, $method)) {
+            $orm = new static();
+
+            return $orm->$method(...$args);
+        }
+
+        throw new App_Exception('error', 'Method does not exist', [
+            'class' => self::class,
+            'method' => $method,
+        ]);
+    }
+
     final public static function find(int $id): static
     {
         $table_name = static::$table_name;
@@ -50,32 +64,6 @@ abstract class ORM
         }
 
         return $orm;
-    }
-
-    /**
-     * @return static[]
-     */
-    final public static function all(): array
-    {
-        $table_name = static::$table_name;
-        $result = Database::query(
-            "SELECT * FROM $table_name"
-        );
-
-        $array_all = [];
-
-        foreach ($result as $result_row) {
-
-            $orm = new static();
-
-            foreach ($result_row as $column => $value) {
-                $orm->$column = $value;
-            }
-
-            $array_all[] = $orm;
-        }
-
-        return $array_all;
     }
 
     /**
@@ -107,6 +95,32 @@ abstract class ORM
         $id = $d->get_last_id();
 
         return static::find($id);
+    }
+
+    /**
+     * @return static[]
+     */
+    final public function all(): array
+    {
+        $table_name = static::$table_name;
+        $result = Database::query(
+            "SELECT * FROM $table_name"
+        );
+
+        $array_all = [];
+
+        foreach ($result as $result_row) {
+
+            $orm = new static();
+
+            foreach ($result_row as $column => $value) {
+                $orm->$column = $value;
+            }
+
+            $array_all[] = $orm;
+        }
+
+        return $array_all;
     }
 
     /**
