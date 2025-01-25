@@ -923,3 +923,23 @@ ain}
 #3 /Users/rodrigoeusebio/Herd/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users', Object(Core\HttpMethod))
 #4 /Users/rodrigoeusebio/Herd/php-basic-framework/index.php(30): require('/Users/rodrigoe...')
 #5 {main}
+2025-01-25 11:02:21 | ERROR | Attempt to read property "name" on array | {"errno":2} | #0 /home/reusebio/php-basic-framework/App/Resources/Views/users/index.php(24): Core\ErrorHandler::handler(2, 'Attempt to read...', '/home/reusebio/...', 24)
+#1 /home/reusebio/php-basic-framework/App/Resources/Views/layouts/default.php(32): include('/home/reusebio/...')
+#2 /home/reusebio/php-basic-framework/Core/Render.php(30): include_once('/home/reusebio/...')
+#3 /home/reusebio/php-basic-framework/Core/Render.php(19): Core\Render::page('layouts/default', Array)
+#4 /home/reusebio/php-basic-framework/App/Controllers/User_Controller.php(27): Core\Render::view('users/index', Array)
+#5 [internal function]: App\Controllers\User_Controller::index()
+#6 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#7 /home/reusebio/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users', Object(Core\HttpMethod))
+#8 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#9 {main}
+2025-01-25 11:11:08 | ERROR | Attempt to read property "name" on array | {"errno":2} | #0 /home/reusebio/php-basic-framework/App/Resources/Views/users/index.php(24): Core\ErrorHandler::handler(2, 'Attempt to read...', '/home/reusebio/...', 24)
+#1 /home/reusebio/php-basic-framework/App/Resources/Views/layouts/default.php(32): include('/home/reusebio/...')
+#2 /home/reusebio/php-basic-framework/Core/Render.php(30): include_once('/home/reusebio/...')
+#3 /home/reusebio/php-basic-framework/Core/Render.php(19): Core\Render::page('layouts/default', Array)
+#4 /home/reusebio/php-basic-framework/App/Controllers/User_Controller.php(27): Core\Render::view('users/index', Array)
+#5 [internal function]: App\Controllers\User_Controller::index()
+#6 /home/reusebio/php-basic-framework/Core/Router.php(71): call_user_func(Array)
+#7 /home/reusebio/php-basic-framework/Core/Bootstrap.php(10): Core\Router::route('/users', Object(Core\HttpMethod))
+#8 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#9 {main}

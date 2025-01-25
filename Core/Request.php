@@ -18,6 +18,19 @@ final class Request
     }
 
     /**
+     * @return array<mixed>
+     */
+    public static function parameters(): array
+    {
+        return $_GET;
+    }
+
+    public static function get(string $key, mixed $default = null): mixed
+    {
+        return get_val($_GET, $key, $default);
+    }
+
+    /**
      * Get the method of the request, via REQUEST_METHOD or _method attribute
      *
      * @throws App_Exception

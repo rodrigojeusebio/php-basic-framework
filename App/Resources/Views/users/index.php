@@ -1,7 +1,26 @@
+<?php
+
+use Core\Request;
+
+?>
 <h3 class="text-2xl font-semibold leading-none tracking-tight">User Activity</h3>
 <p class="text-sm text-muted-foreground">View user activity and engagement.</p>
 <div class="p-6 pt-0">
     <div class="relative w-full overflow-auto">
+        <div class="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
+            <h1 class="text-3xl font-semibold mb-6 text-center text-slate-800">Filters</h1>
+            <form method="GET" action="/users">
+                <div class="flex flex-col">
+                    <input type="text" name="name" placeholder="Search for a user" value="<?= Request::get('name') ?>"
+                        class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-800 transition duration-200">
+
+                    <button type="submit"
+                        class="w-full bg-slate-800 text-white py-3 rounded-lg hover:bg-slate-700 transition duration-200">
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
         <table class="w-full caption-bottom text-sm">
             <thead class="tr:border-b font-bold">
                 <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">

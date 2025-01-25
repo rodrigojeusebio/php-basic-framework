@@ -15,7 +15,7 @@ final class Database extends Singleton
     /** @var array<string> */
     public array $select = [];
 
-    /** @var array<array{column:string,operator:string,value:string|int}> */
+    /** @var array<array{type:'where',column:string,"operator":string,value:string|int}|array{type:'like',column:string,value:string|int}> */
     public array $wheres = [];
 
     /** @var array<array{join_type:'left'|'inner',table_name:string,key_1:string,key_2:string}> */
@@ -103,8 +103,20 @@ final class Database extends Singleton
     public function where(string $column, string $operator, string|int $value): self
     {
         $this->wheres[] = [
+            'type' => 'where',
             'column' => $column,
             'operator' => $operator,
+            'value' => $value,
+        ];
+
+        return $this;
+    }
+
+    public function like(string $column, string|int $value): self
+    {
+        $this->wheres[] = [
+            'type' => 'like',
+            'column' => $column,
             'value' => $value,
         ];
 
@@ -201,12 +213,24 @@ final class Database extends Singleton
             }
         }
 
-        if ($this->wheres) {
+        if (! empty($this->wheres)) {
             $sql .= ' WHERE ';
             $total_where = count($this->wheres);
             foreach ($this->wheres as $index => $where_values) {
                 $add_and = $index > 0 && $index <= $total_where - 1;
-                $sql .= ($add_and ? ' AND ' : ' ').$where_values['column'].' '.$where_values['operator'].' ?';
+                $sql .= $add_and
+                    ? ' AND '
+                    : ' ';
+
+                $sql .= match ($where_values['type']) {
+                    'where' => $where_values['column'].' '.$where_values['operator'].' ?',
+                    'like' => $where_values['column'].' LIKE ? ',
+                };
+
+                if ($where_values['type'] === 'like') {
+                    $where_values['value'] = "%{$where_values['value']}%";
+                }
+
                 $attributes[] = $where_values['value'];
             }
         }

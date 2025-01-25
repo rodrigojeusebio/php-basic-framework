@@ -12,7 +12,14 @@ final class User_Controller
 {
     public static function index(): never
     {
-        $users = User::where('name', '=', 'Rodrigo')->all();
+        $filters = Request::parameters();
+
+        if (isset($filters['name'])) {
+            $users = User::like('name', $filters['name'])
+                ->all();
+        } else {
+            $users = User::all();
+        }
 
         Render::view('users/index', ['users' => $users]);
     }
