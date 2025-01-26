@@ -8,6 +8,7 @@ use Core\Router;
 
 Router::get('/', Controller::class, 'home');
 
+// Users Resource
 Router::get('/users/create', User_Controller::class, 'create');
 Router::get('/users/{:id}', User_Controller::class, 'show');
 Router::patch('/users/{:id}', User_Controller::class, 'update');

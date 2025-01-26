@@ -55,10 +55,16 @@ class Validation
         return empty($this->errors);
     }
 
-    public function add_rule(string $field, string $rule, ?string $custom_message = null): static
+    /**
+     * @param  string|array<string>  $rules
+     */
+    public function add_rule(string $field, string|array $rules, ?string $custom_message = null): static
     {
         $this->fields[] = $field;
-        $this->rules[] = new Rule($field, $rule, $custom_message);
+
+        foreach (Arr::wrap($rules) as $rule) {
+            $this->rules[] = new Rule($field, $rule, $custom_message);
+        }
 
         return $this;
     }
@@ -68,6 +74,8 @@ class Validation
      */
     public function add_callback(string $field, string|array|Closure $callback): static
     {
+        $this->fields[] = $field;
+
         $this->callbacks[] = new Callback($field, $callback);
 
         return $this;
@@ -103,6 +111,7 @@ class Rule
         'string' => 'Value should be alpha numeric',
         'numeric' => 'Value should be numeric',
         'int' => 'Value should be an integer',
+        'email' => 'Provide a valid email',
     ];
 
     public function __construct(
@@ -118,6 +127,7 @@ class Rule
             'string' => is_string($value),
             'numeric' => is_numeric($value),
             'int' => is_int($value),
+            'email' => is_string($value),
             default => throw new App_Exception('error', 'Validation rule is not supported', ['validation' => $this->rule])
         };
 
@@ -152,7 +162,7 @@ class Callback
 
         if ($this->callable instanceof Closure) {
             $callable = $this->callable;
-            $callable($validation);
+            $callable($validation, $this->field);
         }
     }
 }

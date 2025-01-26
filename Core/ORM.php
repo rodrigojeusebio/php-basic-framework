@@ -93,13 +93,19 @@ abstract class ORM
         return static::find($id);
     }
 
-    final public static function find(int $id): static
+    final public static function find(?int $id = null, bool $required = false): static
     {
         $orm = new static;
-        $result = $orm->database
-            ->from(static::$table_name)
-            ->where('id', '=', $id)
-            ->find();
+        if ($id) {
+            $result = $orm->database
+                ->from(static::$table_name)
+                ->where('id', '=', $id)
+                ->find();
+        } else {
+            $result = $orm->database
+                ->from(static::$table_name)
+                ->find();
+        }
 
         $result_row = Arr::first_value($result);
 
@@ -109,7 +115,7 @@ abstract class ORM
             foreach ($result_row as $column => $value) {
                 $orm->$column = $value;
             }
-        } else {
+        } elseif ($required) {
             throw new App_Exception('error', 'You do not have access to this resource or it does not exist', ['table_name' => static::$table_name, 'id' => $id]);
         }
 
@@ -169,5 +175,10 @@ abstract class ORM
 
         $this->database = Database::get();
         $this->database->update($table_name, $orm_values, $this->id);
+    }
+
+    final public function loaded(): bool
+    {
+        return isset($this->id);
     }
 }
