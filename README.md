@@ -19,8 +19,20 @@ php -S localhost:8000
 ![Logger](./images/Logger.png)
 
 
-### To do's
+### Implemented
+- Router
+- Database
+- ORM (very weak)
+- Session manager (File system)
+- Authentication
+- Authorization
+- Render
+- Request
+- Form Validation
 
+### To do's
+- Middleware
+- Form builder + Validation
 - Improve ORM, currently it is unusable
 - Create a wrapper around the php array
     - Create methods like 
