@@ -12,7 +12,7 @@ final class Arr
      * @template Tvalue
      *
      * @param  Tvalue | array<Tvalue>  $value
-     * @return array<Tvalue>
+     * @return (Tvalue is array ? Tvalue : array<Tvalue>)
      */
     public static function wrap(mixed $value): array
     {

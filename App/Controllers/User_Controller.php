@@ -7,6 +7,7 @@ namespace App\Controllers;
 use App\Models\User;
 use Core\Render;
 use Core\Request;
+use Core\Validation;
 
 final class User_Controller
 {
@@ -47,9 +48,22 @@ final class User_Controller
     {
         $attributes = Request::attributes();
 
-        $user = User::create($attributes);
+        $validation = (new Validation($attributes))
+            ->add_rule('name', 'required')
+            ->add_callback('password', function (Validation $validation) {
+                if ($validation->password === 'password') {
+                    $validation->add_error('password', 'Another user already has this password');
+                }
+            });
 
-        Request::redirect("/users/$user->id");
+        if ($validation->validate()) {
+            $user = User::create($validation->values);
+
+            Request::redirect("/users/$user->id");
+        } else {
+            Render::view('users/create', ['attributes' => $attributes, 'errors' => $validation->errors]);
+        }
+
     }
 
     public static function update(int $id): never

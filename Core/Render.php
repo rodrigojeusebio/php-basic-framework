@@ -9,6 +9,13 @@ use Libs\Singleton;
 final class Render extends Singleton
 {
     /**
+     * Variables that will always be set on the view
+     *
+     * @var array<string,mixed>
+     */
+    private static array $global_variables = ['errors' => [], 'attributes' => []];
+
+    /**
      * @param  array<string,mixed>  $variables
      */
     public static function view(string $path, array $variables = []): never
@@ -25,6 +32,7 @@ final class Render extends Singleton
     public static function page(string $path, array $variables = []): never
     {
         $render = self::get_instance();
+        extract(self::$global_variables);
         extract($variables);
         $template_path = self::get_view_path($path);
         include_once $template_path;
