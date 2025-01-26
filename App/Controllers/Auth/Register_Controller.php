@@ -7,6 +7,7 @@ namespace App\Controllers\Auth;
 use App\Models\User;
 use Core\Render;
 use Core\Request;
+use Core\Session;
 use Core\Validation;
 use Libs\Auth;
 
@@ -47,7 +48,9 @@ class Register_Controller
 
             Auth::login($user->id);
         } else {
-            Render::view('/Auth/register', ['errors' => $validation->errors, 'attributes' => $validation->values]);
+            Session::flash('errors', $validation->errors);
+            Session::flash('values', $validation->values);
+            Request::redirect('/register');
         }
 
         Request::redirect('/');

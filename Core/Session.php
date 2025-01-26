@@ -11,7 +11,7 @@ class Session
 
     public static function get(string $key, mixed $default = null): mixed
     {
-        return get_val($_SESSION, $key, $default);
+        return $_SESSION[$key] ?? $default;
     }
 
     public static function start(): void
@@ -41,6 +41,35 @@ class Session
 
         if (session_id()) {
             session_regenerate_id(true);
+        }
+    }
+
+    public static function flash(string $key, mixed $value): void
+    {
+        $_SESSION['_flash'] ??= [];
+        if (is_array($_SESSION['_flash'])) {
+            $_SESSION['_flash'][$key] = $value;
+        }
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    public static function get_flash(): array
+    {
+        $flash = self::get('_flash', []);
+        if (is_array($flash)) {
+            /** @var array<string,mixed> */
+            return $flash;
+        }
+
+        return [];
+    }
+
+    public static function unflash(): void
+    {
+        if (isset($_SESSION['_flash'])) {
+            unset($_SESSION['_flash']);
         }
     }
 }

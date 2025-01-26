@@ -64,7 +64,7 @@ final class Request
     public static function redirect(string $url): never
     {
         ob_clean();
-        header("Location: $url");
+        header("Location: $url", true, 303);
         exit;
     }
 }

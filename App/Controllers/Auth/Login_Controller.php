@@ -6,6 +6,7 @@ namespace App\Controllers\Auth;
 
 use Core\Render;
 use Core\Request;
+use Core\Session;
 use Core\Validation;
 use Libs\Auth;
 
@@ -32,7 +33,9 @@ class Login_Controller
         }
 
         if ($validation->errors) {
-            Render::view('/Auth/login', ['errors' => $validation->errors, 'attributes' => $validation->values]);
+            Session::flash('errors', $validation->errors);
+            Session::flash('values', $validation->values);
+            Request::redirect('/login');
         }
 
         Request::redirect('/');

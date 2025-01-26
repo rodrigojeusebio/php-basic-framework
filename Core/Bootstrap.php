@@ -9,3 +9,4 @@ include_once Config::get('app_path').'Routes/auth.php';
 
 Session::start();
 Router::route(Request::uri(), Request::method());
+Session::unflash();

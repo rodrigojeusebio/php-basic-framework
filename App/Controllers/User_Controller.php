@@ -11,7 +11,7 @@ use Core\Validation;
 
 final class User_Controller
 {
-    public static function index(): never
+    public static function index(): void
     {
         $filters = Request::parameters();
 
@@ -25,36 +25,31 @@ final class User_Controller
         Render::view('users/index', ['users' => $users]);
     }
 
-    public static function show(int $user_id): never
+    public static function show(int $user_id): void
     {
         $user = User::find($user_id);
 
         Render::view('users/show', ['user_name' => $user->name, 'user_id' => $user_id]);
     }
 
-    public static function create(): never
+    public static function create(): void
     {
         Render::view('users/create', []);
     }
 
-    public static function edit(int $id): never
+    public static function edit(int $id): void
     {
         $user = User::find($id);
 
         Render::view('users/edit', ['user' => $user]);
     }
 
-    public static function store(): never
+    public static function store(): void
     {
         $attributes = Request::attributes();
 
         $validation = (new Validation($attributes))
-            ->add_rule('name', 'required')
-            ->add_callback('password', function (Validation $validation) {
-                if ($validation->password === 'password') {
-                    $validation->add_error('password', 'Another user already has this password');
-                }
-            });
+            ->add_rule('name', 'required');
 
         if ($validation->validate()) {
             $user = User::create($validation->values);
@@ -66,7 +61,7 @@ final class User_Controller
 
     }
 
-    public static function update(int $id): never
+    public static function update(int $id): void
     {
         $attributes = Request::attributes();
 
@@ -77,7 +72,7 @@ final class User_Controller
         Request::redirect("/users/$user->id");
     }
 
-    public static function delete(): never
+    public static function delete(): void
     {
         Request::redirect('/users');
     }

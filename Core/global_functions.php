@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Core\Config;
+use Core\Session;
 
 function style_key(string $key): string
 {
@@ -42,7 +43,10 @@ function get_base_path(): ?string
 }
 
 /**
- * @param  array<string,mixed>|array<mixed>  $array
+ * @template Tvalue
+ *
+ * @param  array<string,Tvalue>|array<Tvalue>  $array
+ * @return Tvalue
  */
 function get_val(array $array, string|int $key, mixed $default = null): mixed
 {
@@ -51,4 +55,21 @@ function get_val(array $array, string|int $key, mixed $default = null): mixed
     }
 
     return $default;
+}
+
+function old(string $key, mixed $default = null): mixed
+{
+    $flash = get_val(Session::get_flash(), 'values', []);
+
+    return get_val($flash, $key, $default);
+}
+
+/**
+ * @return array<string,string>
+ */
+function error(string $key): array
+{
+    $flash = get_val(Session::get_flash(), 'errors', []);
+
+    return get_val($flash, $key, []);
 }

@@ -18,7 +18,7 @@ final class Render extends Singleton
     /**
      * @param  array<string,mixed>  $variables
      */
-    public static function view(string $path, array $variables = []): never
+    public static function view(string $path, array $variables = []): void
     {
         extract($variables);
         $template_path = self::get_view_path($path);
@@ -29,14 +29,13 @@ final class Render extends Singleton
     /**
      * @param  array<string,mixed>  $variables
      */
-    public static function page(string $path, array $variables = []): never
+    public static function page(string $path, array $variables = []): void
     {
         $render = self::get_instance();
         extract(self::$global_variables);
         extract($variables);
         $template_path = self::get_view_path($path);
         include_once $template_path;
-        exit;
     }
 
     private static function get_view_path(string $path): string

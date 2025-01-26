@@ -32,10 +32,14 @@ use Core\Request;
                         class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
                         Email
                     </th>
+                    <th
+                        class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                        Actions
+                    </th>
                 </tr>
             </thead>
             <tbody class="[&amp;_tr:last-child]:border-0">
-                <?php foreach ($users as $user) { ?>
+                <?php foreach ($users as $user): ?>
                     <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
                         <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
                             <div class="flex items-center gap-3">
@@ -44,11 +48,14 @@ use Core\Request;
                                 </div>
                             </div>
                         </td>
-                        <!-- Change this to anything else -->
-                        <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"><?= $user->password ?></td>
+                        <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"><?= $user->email ?></td>
+                        <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                            <a href="/users/<?= $user->id ?>" class="text-blue-600 hover:underline">Show</a>
+                        </td>
                     </tr>
-                <?php } ?>
+                <?php endforeach ?>
             </tbody>
         </table>
+
     </div>
 </div>
