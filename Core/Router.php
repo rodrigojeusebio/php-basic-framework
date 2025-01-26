@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Core;
 
+use Closure;
 use Exception;
 use Libs\Singleton;
 
@@ -12,75 +13,91 @@ final class Router extends Singleton
     /** @var array<Route> */
     protected static array $routes = [];
 
+    /**
+     * @param  array{string,string}|Closure  $callback
+     */
     public static function get(
         string $uri,
-        string $controller,
-        string $function,
+        array|Closure $callback,
     ): void {
-        self::get_instance()::register_route($uri, HttpMethod::GET, $controller, $function);
+        self::get_instance()::register_route($uri, HttpMethod::GET, $callback);
     }
 
+    /**
+     * @param  array{string,string}|Closure  $callback
+     */
     public static function post(
         string $uri,
-        string $controller,
-        string $function,
+        array|Closure $callback,
     ): void {
-        self::get_instance()::register_route($uri, HttpMethod::POST, $controller, $function);
+        self::get_instance()::register_route($uri, HttpMethod::POST, $callback);
     }
 
-    public static function delete(
-        string $uri,
-        string $controller,
-        string $function,
-    ): void {
-        self::get_instance()::register_route($uri, HttpMethod::DELETE, $controller, $function);
-    }
-
-    public static function put(
-        string $uri,
-        string $controller,
-        string $function,
-    ): void {
-        self::get_instance()::register_route($uri, HttpMethod::PUT, $controller, $function);
-    }
-
+    /**
+     * @param  array{string,string}|Closure  $callback
+     */
     public static function patch(
         string $uri,
-        string $controller,
-        string $function,
+        array|Closure $callback,
     ): void {
-        self::get_instance()::register_route($uri, HttpMethod::PATCH, $controller, $function);
+        self::get_instance()::register_route($uri, HttpMethod::PATCH, $callback);
+    }
+
+    /**
+     * @param  array{string,string}|Closure  $callback
+     */
+    public static function put(
+        string $uri,
+        array|Closure $callback,
+    ): void {
+        self::get_instance()::register_route($uri, HttpMethod::PUT, $callback);
+    }
+
+    /**
+     * @param  array{string,string}|Closure  $callback
+     */
+    public static function delete(
+        string $uri,
+        array|Closure $callback,
+    ): void {
+        self::get_instance()::register_route($uri, HttpMethod::DELETE, $callback);
     }
 
     public static function route(string $uri, HttpMethod $method): void
     {
         if ($route = self::get_instance()::get_route($uri, $method)) {
-            $class = $route->controller;
-            $function = $route->function;
+            if (is_array($route->callback)) {
+                [$class, $function] = $route->callback;
 
-            if (! class_exists($class)) {
-                throw new Exception("Class '$class' does not exist");
+                if (! class_exists($class)) {
+                    throw new Exception("Class '$class' does not exist");
+                }
+                if (! method_exists($class, $function)) {
+                    throw new App_Exception('error', "Method does not exist in class $class", ['class' => $class, 'function' => $function]);
+                }
+                /** @var callable(): mixed */
+                $callback = [$class, $function];
+
+                call_user_func($callback, ...$route->parameters);
+            } elseif ($route->callback instanceof Closure) {
+                $callback = $route->callback;
+                $callback(...$route->parameters);
             }
-            if (! method_exists($class, $function)) {
-                throw new App_Exception('error', "Method does not exist in class $class", ['class' => $class, 'function' => $function]);
-            }
 
-            /** @var callable(): mixed */
-            $callback = [$class, $function];
-
-            call_user_func($callback, ...$route->parameters);
         } else {
             Render::view('default_pages/404');
         }
     }
 
+    /**
+     * @param  array{string,string}|Closure  $callback
+     */
     private static function register_route(
         string $uri,
         HttpMethod $method,
-        string $controller,
-        string $function
+        array|Closure $callback,
     ): void {
-        self::get_instance()::$routes[] = new Route($uri, $method, $controller, $function);
+        self::get_instance()::$routes[] = new Route($uri, $method, $callback);
     }
 
     /**
@@ -162,11 +179,13 @@ final class Route
      */
     public array $parameters;
 
+    /**
+     * @param  array{string,string}|Closure  $callback
+     */
     public function __construct(
         public readonly string $uri,
         public readonly HttpMethod $method,
-        public readonly string $controller,
-        public readonly string $function,
+        public readonly array|Closure $callback,
     ) {}
 }
 

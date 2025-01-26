@@ -72,7 +72,7 @@ final class User_Controller
         Request::redirect("/users/$user->id");
     }
 
-    public static function delete(): void
+    public static function destroy(): void
     {
         Request::redirect('/users');
     }
