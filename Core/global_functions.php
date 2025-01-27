@@ -57,7 +57,7 @@ function get_val(array $array, string|int $key, mixed $default = null): mixed
     return $default;
 }
 
-function old(string $key, mixed $default = null): mixed
+function old(string $key, mixed $default = ''): mixed
 {
     $flash = get_val(Session::get_flash(), 'values', []);
 

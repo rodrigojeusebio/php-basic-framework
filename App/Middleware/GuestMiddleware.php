@@ -2,10 +2,11 @@
 
 namespace App\Middleware;
 
+use Core\Middleware;
 use Core\Request;
 use Libs\Auth;
 
-class GuestMiddleware
+class GuestMiddleware implements Middleware
 {
     public function handle(): void
     {

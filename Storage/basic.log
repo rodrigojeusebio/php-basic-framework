@@ -1200,3 +1200,12 @@ ain}
 #7 /home/reusebio/php-basic-framework/Core/Bootstrap.php(11): Core\Router::route('/register', Object(Core\HttpMethod))
 #8 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
 #9 {main}
+2025-01-27 19:56:54 | ERROR | Attempt to read property "registered_middlewares" on string | {"errno":2} | #0 /home/reusebio/php-basic-framework/Core/MiddlewareManager.php(30): Core\ErrorHandler::handler(2, 'Attempt to read...', '/home/reusebio/...', 30)
+#1 /home/reusebio/php-basic-framework/Core/Router.php(70): Core\MiddlewareManager::handle(Array)
+#2 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/login', Object(Core\HttpMethod))
+#3 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#4 {main}
+2025-01-27 20:14:58 | ERROR | Middleware not found | {"name":"bla"} | #0 /home/reusebio/php-basic-framework/Core/Router.php(70): Core\MiddlewareManager::handle(Array)
+#1 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/users/create', Object(Core\HttpMethod))
+#2 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#3 {main}

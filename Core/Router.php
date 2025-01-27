@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Core;
 
-use App\Middleware\Middleware;
 use Closure;
 use Exception;
 use Helpers\Arr;
@@ -68,7 +67,7 @@ final class Router extends Singleton
     public static function route(string $uri, HttpMethod $method): void
     {
         if ($route = self::get_instance()::get_route($uri, $method)) {
-            Middleware::handle($route->middlewares);
+            MiddlewareManager::handle($route->middlewares);
             if (is_array($route->callback)) {
                 [$class, $function] = $route->callback;
 
