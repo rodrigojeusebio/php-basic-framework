@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Core;
 
-use App\Middleware\AuthMiddleware;
-use App\Middleware\EmptyMiddleware;
-use App\Middleware\GuestMiddleware;
+use App\Middleware\Middleware;
 use Closure;
 use Exception;
 use Helpers\Arr;
@@ -70,25 +68,17 @@ final class Router extends Singleton
     public static function route(string $uri, HttpMethod $method): void
     {
         if ($route = self::get_instance()::get_route($uri, $method)) {
+            Middleware::handle($route->middlewares);
             if (is_array($route->callback)) {
                 [$class, $function] = $route->callback;
 
-                if (!class_exists($class)) {
+                if (! class_exists($class)) {
                     throw new Exception("Class '$class' does not exist");
                 }
-                if (!method_exists($class, $function)) {
+                if (! method_exists($class, $function)) {
                     throw new App_Exception('error', "Method does not exist in class $class", ['class' => $class, 'function' => $function]);
                 }
 
-                foreach ($route->middlewares as $middleware) {
-                    $middleware = match ($middleware) {
-                        'auth' => new AuthMiddleware,
-                        'guest' => new GuestMiddleware,
-                        default => new EmptyMiddleware,
-                    };
-
-                    $middleware->handle();
-                }
                 /** @var callable(): mixed */
                 $callback = [$class, $function];
 
@@ -97,7 +87,6 @@ final class Router extends Singleton
                 $callback = $route->callback;
                 $callback(...$route->parameters);
             }
-
         } else {
             Render::view('default_pages/404');
         }
@@ -164,8 +153,7 @@ final class URI
 {
     public function __construct(
         private string $string_uri
-    ) {
-    }
+    ) {}
 
     public static function from(string $uri): static
     {
@@ -206,8 +194,7 @@ final class Route
         public readonly HttpMethod $method,
         public readonly array|Closure $callback,
         public array $middlewares = [],
-    ) {
-    }
+    ) {}
 
     /**
      * @param  string|array<string>  $key

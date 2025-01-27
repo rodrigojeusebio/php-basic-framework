@@ -4,7 +4,5 @@ namespace App\Middleware;
 
 class EmptyMiddleware
 {
-    public function handle(): void
-    {
-    }
+    public function handle(): void {}
 }
