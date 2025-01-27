@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Core;
 
+use App\Middleware\AuthMiddleware;
+use App\Middleware\EmptyMiddleware;
+use App\Middleware\GuestMiddleware;
 use Closure;
 use Exception;
+use Helpers\Arr;
 use Libs\Singleton;
 
 final class Router extends Singleton
@@ -19,8 +23,8 @@ final class Router extends Singleton
     public static function get(
         string $uri,
         array|Closure $callback,
-    ): void {
-        self::get_instance()::register_route($uri, HttpMethod::GET, $callback);
+    ): Route {
+        return self::get_instance()::register_route($uri, HttpMethod::GET, $callback);
     }
 
     /**
@@ -29,8 +33,8 @@ final class Router extends Singleton
     public static function post(
         string $uri,
         array|Closure $callback,
-    ): void {
-        self::get_instance()::register_route($uri, HttpMethod::POST, $callback);
+    ): Route {
+        return self::get_instance()::register_route($uri, HttpMethod::POST, $callback);
     }
 
     /**
@@ -39,8 +43,8 @@ final class Router extends Singleton
     public static function patch(
         string $uri,
         array|Closure $callback,
-    ): void {
-        self::get_instance()::register_route($uri, HttpMethod::PATCH, $callback);
+    ): Route {
+        return self::get_instance()::register_route($uri, HttpMethod::PATCH, $callback);
     }
 
     /**
@@ -49,8 +53,8 @@ final class Router extends Singleton
     public static function put(
         string $uri,
         array|Closure $callback,
-    ): void {
-        self::get_instance()::register_route($uri, HttpMethod::PUT, $callback);
+    ): Route {
+        return self::get_instance()::register_route($uri, HttpMethod::PUT, $callback);
     }
 
     /**
@@ -59,8 +63,8 @@ final class Router extends Singleton
     public static function delete(
         string $uri,
         array|Closure $callback,
-    ): void {
-        self::get_instance()::register_route($uri, HttpMethod::DELETE, $callback);
+    ): Route {
+        return self::get_instance()::register_route($uri, HttpMethod::DELETE, $callback);
     }
 
     public static function route(string $uri, HttpMethod $method): void
@@ -69,11 +73,21 @@ final class Router extends Singleton
             if (is_array($route->callback)) {
                 [$class, $function] = $route->callback;
 
-                if (! class_exists($class)) {
+                if (!class_exists($class)) {
                     throw new Exception("Class '$class' does not exist");
                 }
-                if (! method_exists($class, $function)) {
+                if (!method_exists($class, $function)) {
                     throw new App_Exception('error', "Method does not exist in class $class", ['class' => $class, 'function' => $function]);
+                }
+
+                foreach ($route->middlewares as $middleware) {
+                    $middleware = match ($middleware) {
+                        'auth' => new AuthMiddleware,
+                        'guest' => new GuestMiddleware,
+                        default => new EmptyMiddleware,
+                    };
+
+                    $middleware->handle();
                 }
                 /** @var callable(): mixed */
                 $callback = [$class, $function];
@@ -96,8 +110,11 @@ final class Router extends Singleton
         string $uri,
         HttpMethod $method,
         array|Closure $callback,
-    ): void {
-        self::get_instance()::$routes[] = new Route($uri, $method, $callback);
+    ): Route {
+        $route = new Route($uri, $method, $callback);
+        self::get_instance()::$routes[] = $route;
+
+        return $route;
     }
 
     /**
@@ -147,7 +164,8 @@ final class URI
 {
     public function __construct(
         private string $string_uri
-    ) {}
+    ) {
+    }
 
     public static function from(string $uri): static
     {
@@ -181,12 +199,25 @@ final class Route
 
     /**
      * @param  array{string,string}|Closure  $callback
+     * @param  array<string>  $middlewares
      */
     public function __construct(
         public readonly string $uri,
         public readonly HttpMethod $method,
         public readonly array|Closure $callback,
-    ) {}
+        public array $middlewares = [],
+    ) {
+    }
+
+    /**
+     * @param  string|array<string>  $key
+     */
+    public function only(string|array $key): static
+    {
+        $this->middlewares = array_merge($this->middlewares, Arr::wrap($key));
+
+        return $this;
+    }
 }
 
 enum HttpMethod: string
