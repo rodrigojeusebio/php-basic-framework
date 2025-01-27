@@ -29,9 +29,13 @@ php -S localhost:8000
 - Render
 - Request
 - Form Validation
+- Middleware
 
 ### To do's
-- Middleware
+- Table creation
+- Views, should build a pre-processor
+- Validation, helpers to set the checkboxes
+- Authorization to access resources (Gates or ACL, something like that)
 - Form builder + Validation
 - Improve ORM, currently it is unusable
 - Create a wrapper around the php array
