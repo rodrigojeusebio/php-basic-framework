@@ -1,5 +1,5 @@
-CREATE TABLE tasks (
-    status string,
-    task string,
-    user_id int,
+CREATE TABLE task (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    description TEXT NOT NULL,
+    complete INTEGER NOT NULL DEFAULT 0
 );

@@ -30,7 +30,9 @@ class Validation
     /**
      * @param  array<string,mixed>  $values
      */
-    public function __construct(public array $values) {}
+    public function __construct(public array $values)
+    {
+    }
 
     public function __get(string $field): mixed
     {
@@ -40,7 +42,7 @@ class Validation
     public function validate(): bool
     {
         foreach ($this->rules as $rule) {
-            $rule->evaluate($this, $this->values[$rule->field]);
+            $rule->evaluate($this, get_val($this->values, $rule->field, null));
         }
 
         foreach ($this->callbacks as $callback) {
@@ -111,6 +113,7 @@ class Rule
         'string' => 'Value should be alpha numeric',
         'numeric' => 'Value should be numeric',
         'int' => 'Value should be an integer',
+        'bool' => 'Value should be an boolean',
         'email' => 'Provide a valid email',
     ];
 
@@ -118,7 +121,8 @@ class Rule
         public string $field,
         public string $rule,
         public ?string $custom_message = null,
-    ) {}
+    ) {
+    }
 
     public function evaluate(Validation $validation, mixed $value): void
     {
@@ -127,11 +131,12 @@ class Rule
             'string' => is_string($value),
             'numeric' => is_numeric($value),
             'int' => is_int($value),
+            'bool' => is_bool($value),
             'email' => is_string($value),
             default => throw new App_Exception('error', 'Validation rule is not supported', ['validation' => $this->rule])
         };
 
-        if (! $validate) {
+        if (!$validate) {
             $validation->add_error(
                 $this->field,
                 $this->custom_message ?: self::$validation_messages[$this->rule],
@@ -148,7 +153,8 @@ class Callback
     public function __construct(
         public string $field,
         public string|array|Closure $callable,
-    ) {}
+    ) {
+    }
 
     public function evaluate(Validation $validation): void
     {

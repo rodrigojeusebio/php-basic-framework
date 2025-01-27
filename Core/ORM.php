@@ -177,6 +177,11 @@ abstract class ORM
         $this->database->update($table_name, $orm_values, $this->id);
     }
 
+    final public function delete(): void
+    {
+        $this->database->delete(static::$table_name, $this->id);
+    }
+
     final public function loaded(): bool
     {
         return isset($this->id);

@@ -60,10 +60,14 @@ final class Request
 
     /**
      * Redirects the user to other page
+     * @param array<string,mixed> $flash_values
      */
-    public static function redirect(string $url): never
+    public static function redirect(string $url, array $flash_values = []): never
     {
         ob_clean();
+        foreach ($flash_values as $key => $value) {
+            Session::flash($key, $value);
+        }
         header("Location: $url", true, 303);
         exit;
     }

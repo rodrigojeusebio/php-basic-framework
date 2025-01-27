@@ -25,9 +25,9 @@ final class Database extends Singleton
 
     public function __construct()
     {
-        $path = Config::get('base_path').'Database/'.Config::get('database');
+        $path = Config::get('base_path') . 'Database/' . Config::get('database');
         $this->database = new PDO(
-            'sqlite:'.$path,
+            'sqlite:' . $path,
             null,
             null,
             ['fetchMode' => PDO::FETCH_ASSOC]
@@ -165,7 +165,7 @@ final class Database extends Singleton
     public function insert(string $table_name, array $attributes): void
     {
         $fields = implode(', ', array_keys($attributes));
-        $values = array_map(fn ($k) => ":$k", array_keys($attributes));
+        $values = array_map(fn($k) => ":$k", array_keys($attributes));
         $values = implode(', ', $values);
         $sql = "INSERT INTO $table_name ($fields) VALUES ($values);";
         $this->prepared_query($sql, $attributes);
@@ -176,12 +176,19 @@ final class Database extends Singleton
      */
     public function update(string $table_name, array $values, int $id): void
     {
-        $fields = array_map(fn ($k) => "$k = :$k", array_keys($values));
+        $fields = array_map(fn($k) => "$k = :$k", array_keys($values));
 
         $update_statment = implode(', ', $fields);
         $sql = "UPDATE $table_name SET $update_statment WHERE id = $id";
 
         $this->prepared_query($sql, $values);
+    }
+
+    public function delete(string $table_name, int $id): void
+    {
+        $sql = "DELETE FROM $table_name WHERE id = $id";
+
+        $this->query($sql);
     }
 
     public function get_last_id(): int
@@ -197,10 +204,10 @@ final class Database extends Singleton
         $sql = 'SELECT ';
         $attributes = $this->select ? [...array_values($this->select)] : [];
 
-        $values = array_map(fn () => '?', $this->select);
+        $values = array_map(fn() => '?', $this->select);
 
         if ($this->select) {
-            $sql .= implode(', ', $values).' ';
+            $sql .= implode(', ', $values) . ' ';
         } else {
             $sql .= '* ';
         }
@@ -213,7 +220,7 @@ final class Database extends Singleton
             }
         }
 
-        if (! empty($this->wheres)) {
+        if (!empty($this->wheres)) {
             $sql .= ' WHERE ';
             $total_where = count($this->wheres);
             foreach ($this->wheres as $index => $where_values) {
@@ -223,8 +230,8 @@ final class Database extends Singleton
                     : ' ';
 
                 $sql .= match ($where_values['type']) {
-                    'where' => $where_values['column'].' '.$where_values['operator'].' ?',
-                    'like' => $where_values['column'].' LIKE ? ',
+                    'where' => $where_values['column'] . ' ' . $where_values['operator'] . ' ?',
+                    'like' => $where_values['column'] . ' LIKE ? ',
                 };
 
                 if ($where_values['type'] === 'like') {

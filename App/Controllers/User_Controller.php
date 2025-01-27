@@ -72,8 +72,11 @@ final class User_Controller
         Request::redirect("/users/$user->id");
     }
 
-    public static function destroy(): void
+    public static function destroy(int $id): void
     {
+        $user = User::find($id);
+        $user->delete();
+
         Request::redirect('/users');
     }
 }
