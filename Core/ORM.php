@@ -51,7 +51,7 @@ abstract class ORM
     final public static function __callStatic(string $method, mixed $args): mixed
     {
         if (method_exists(Database::class, $method)) {
-            $orm = new static();
+            $orm = new static;
             $orm->database->$method(...$args);
 
             return $orm;
@@ -111,7 +111,7 @@ abstract class ORM
         $result_row = Arr::first_value($result);
 
         if (is_array($result_row)) {
-            $orm = new static();
+            $orm = new static;
 
             foreach ($result_row as $column => $value) {
                 $orm->$column = $value;
@@ -139,7 +139,7 @@ abstract class ORM
 
         foreach ($result as $result_row) {
 
-            $orm = new static();
+            $orm = new static;
 
             foreach ($result_row as $column => $value) {
                 $orm->$column = $value;

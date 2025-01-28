@@ -6,7 +6,6 @@
         "date_time_immutable": true,
         "lowercase_keywords": true,
         "lowercase_static_reference": true,
-        "final_public_method_for_abstract_class": true,
         "fully_qualified_strict_types": true,
         "global_namespace_import": {
             "import_classes": true,
@@ -15,7 +14,6 @@
         },
         "mb_str_functions": true,
         "modernize_types_casting": true,
-        "new_with_parentheses": false,
         "no_superfluous_elseif": true,
         "no_useless_else": true,
         "no_multiple_statements_per_line": true,

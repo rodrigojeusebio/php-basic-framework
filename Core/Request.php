@@ -11,7 +11,7 @@ final class Request
         $uri = get_val($_SERVER, 'PATH_INFO', get_val($_SERVER, 'REQUEST_URI', '/'));
 
         if (is_string($uri)) {
-            return $uri;
+            return mb_strtolower($uri);
         }
 
         return '/';
