@@ -30,13 +30,13 @@ php -S localhost:8000
 - Request
 - Form Validation
 - Middleware
+- Authorization to access resources (Gates or ACL, something like that) - Policies
+- Form builder + Validation
 
 ### To do's
 - Table creation
 - Views, should build a pre-processor
 - Validation, helpers to set the checkboxes
-- Authorization to access resources (Gates or ACL, something like that)
-- Form builder + Validation
 - Improve ORM, currently it is unusable
 - Create a wrapper around the php array
     - Create methods like 
