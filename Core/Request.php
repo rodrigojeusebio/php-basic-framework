@@ -60,7 +60,8 @@ final class Request
 
     /**
      * Redirects the user to other page
-     * @param array<string,mixed> $flash_values
+     *
+     * @param  array<string,mixed>  $flash_values
      */
     public static function redirect(string $url, array $flash_values = []): never
     {
@@ -75,6 +76,6 @@ final class Request
     public static function unauthorized(): never
     {
         Render::page('default_pages/401');
-        die;
+        exit;
     }
 }

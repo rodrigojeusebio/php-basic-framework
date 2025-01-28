@@ -30,9 +30,7 @@ class Validation
     /**
      * @param  array<string,mixed>  $values
      */
-    public function __construct(public array $values)
-    {
-    }
+    public function __construct(public array $values) {}
 
     public function __get(string $field): mixed
     {
@@ -121,8 +119,7 @@ class Rule
         public string $field,
         public string $rule,
         public ?string $custom_message = null,
-    ) {
-    }
+    ) {}
 
     public function evaluate(Validation $validation, mixed $value): void
     {
@@ -136,7 +133,7 @@ class Rule
             default => throw new App_Exception('error', 'Validation rule is not supported', ['validation' => $this->rule])
         };
 
-        if (!$validate) {
+        if (! $validate) {
             $validation->add_error(
                 $this->field,
                 $this->custom_message ?: self::$validation_messages[$this->rule],
@@ -153,8 +150,7 @@ class Callback
     public function __construct(
         public string $field,
         public string|array|Closure $callable,
-    ) {
-    }
+    ) {}
 
     public function evaluate(Validation $validation): void
     {

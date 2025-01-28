@@ -38,11 +38,6 @@ class Auth extends Singleton
         return true;
     }
 
-    public function logout(): void
-    {
-        Session::destroy();
-    }
-
     public static function user(): User
     {
         $user_id = Session::get('user_id');
@@ -50,5 +45,10 @@ class Auth extends Singleton
             return User::find($user_id, true);
         }
         throw new App_Exception('error', 'Trying to access user, but no user is logged in');
+    }
+
+    public function logout(): void
+    {
+        Session::destroy();
     }
 }

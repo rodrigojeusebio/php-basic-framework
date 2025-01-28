@@ -21,13 +21,16 @@ final class Database extends Singleton
     /** @var array<array{join_type:'left'|'inner',table_name:string,key_1:string,key_2:string}> */
     public array $joins = [];
 
+    /** @var array<array{column:string,type:'ASC'|'DESC'}> */
+    public array $orders = [];
+
     public string $table_name = '';
 
     public function __construct()
     {
-        $path = Config::get('base_path') . 'Database/' . Config::get('database');
+        $path = Config::get('base_path').'Database/'.Config::get('database');
         $this->database = new PDO(
-            'sqlite:' . $path,
+            'sqlite:'.$path,
             null,
             null,
             ['fetchMode' => PDO::FETCH_ASSOC]
@@ -64,7 +67,6 @@ final class Database extends Singleton
      */
     public function prepared_query(string $query, array $attributes = []): array
     {
-        Logger::log('info', $query);
         $result = [];
 
         $query = $this->database->prepare($query);
@@ -141,6 +143,17 @@ final class Database extends Singleton
     }
 
     /**
+     * @param  'DESC'|'ASC'  $type
+     */
+    public function orderby(string $column, string $type): void
+    {
+        $this->orders[] = [
+            'column' => $column,
+            'type' => $type,
+        ];
+    }
+
+    /**
      * @return array<array<string,mixed>>
      */
     public function find(): array
@@ -167,7 +180,7 @@ final class Database extends Singleton
     public function insert(string $table_name, array $attributes): void
     {
         $fields = implode(', ', array_keys($attributes));
-        $values = array_map(fn($k) => ":$k", array_keys($attributes));
+        $values = array_map(fn ($k) => ":$k", array_keys($attributes));
         $values = implode(', ', $values);
         $sql = "INSERT INTO $table_name ($fields) VALUES ($values);";
         $this->prepared_query($sql, $attributes);
@@ -178,7 +191,7 @@ final class Database extends Singleton
      */
     public function update(string $table_name, array $values, int $id): void
     {
-        $fields = array_map(fn($k) => "$k = :$k", array_keys($values));
+        $fields = array_map(fn ($k) => "$k = :$k", array_keys($values));
 
         $update_statment = implode(', ', $fields);
         $sql = "UPDATE $table_name SET $update_statment WHERE id = $id";
@@ -198,6 +211,15 @@ final class Database extends Singleton
         return (int) $this->database->lastInsertId();
     }
 
+    public function clear(): void
+    {
+        $this->select = [];
+        $this->wheres = [];
+        $this->joins = [];
+        $this->orders = [];
+        $this->table_name = '';
+    }
+
     /**
      * @return array{non-falsy-string, list<string|int>}
      */
@@ -206,10 +228,10 @@ final class Database extends Singleton
         $sql = 'SELECT ';
         $attributes = $this->select ? [...array_values($this->select)] : [];
 
-        $values = array_map(fn() => '?', $this->select);
+        $values = array_map(fn () => '?', $this->select);
 
         if ($this->select) {
-            $sql .= implode(', ', $values) . ' ';
+            $sql .= implode(', ', $values).' ';
         } else {
             $sql .= '* ';
         }
@@ -222,7 +244,7 @@ final class Database extends Singleton
             }
         }
 
-        if (!empty($this->wheres)) {
+        if (! empty($this->wheres)) {
             $sql .= ' WHERE ';
             $total_where = count($this->wheres);
             foreach ($this->wheres as $index => $where_values) {
@@ -232,8 +254,8 @@ final class Database extends Singleton
                     : ' ';
 
                 $sql .= match ($where_values['type']) {
-                    'where' => $where_values['column'] . ' ' . $where_values['operator'] . ' ?',
-                    'like' => $where_values['column'] . ' LIKE ? ',
+                    'where' => $where_values['column'].' '.$where_values['operator'].' ?',
+                    'like' => $where_values['column'].' LIKE ? ',
                 };
 
                 if ($where_values['type'] === 'like') {
@@ -244,14 +266,18 @@ final class Database extends Singleton
             }
         }
 
-        return [$sql, $attributes];
-    }
+        if (! empty($this->orders)) {
+            $sql .= ' ORDER BY ';
+            $total_orders = count($this->orders);
+            foreach ($this->orders as $index => $order) {
+                $add_comma = $index > 0 && $index <= $total_orders - 1;
+                $sql .= $add_comma
+                    ? ', '
+                    : ' ';
+                $sql .= $order['column'].' '.$order['type'];
+            }
+        }
 
-    public function clear(): void
-    {
-        $this->wheres = [];
-        $this->joins = [];
-        $this->select = [];
-        $this->table_name = '';
+        return [$sql, $attributes];
     }
 }

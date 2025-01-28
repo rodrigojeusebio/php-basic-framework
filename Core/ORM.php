@@ -6,6 +6,9 @@ namespace Core;
 
 use Helpers\Arr;
 
+/**
+ * @property-read int $id
+ */
 abstract class ORM
 {
     /** @var array<string,mixed> */

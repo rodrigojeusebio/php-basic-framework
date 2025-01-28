@@ -44,7 +44,7 @@ use Core\Request;
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($tasks as $task): ?>
+                <?php foreach ($tasks as $task) { ?>
                     <tr class="border-b last:border-0 hover:bg-gray-50">
                         <td class="px-6 py-4">
                             <?= htmlspecialchars($task->description, ENT_QUOTES, 'UTF-8') ?>
@@ -65,7 +65,7 @@ use Core\Request;
                             </a>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>

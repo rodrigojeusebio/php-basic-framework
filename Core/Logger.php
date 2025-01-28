@@ -29,7 +29,7 @@ final class Logger extends Singleton
 
     public static function flush(): void
     {
-        $log_file = get_base_path() . 'Storage/basic.log';
+        $log_file = get_base_path().'Storage/basic.log';
 
         File::write_lines($log_file, self::get_instance()->logs);
     }

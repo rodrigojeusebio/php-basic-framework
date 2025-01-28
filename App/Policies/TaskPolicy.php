@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Models\Task;
 use App\Models\User;
 use Core\ORM;
 use Core\Policy;
@@ -16,5 +15,4 @@ class TaskPolicy extends Policy
             Request::unauthorized();
         }
     }
-
 }

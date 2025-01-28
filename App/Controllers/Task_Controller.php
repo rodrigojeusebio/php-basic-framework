@@ -17,7 +17,8 @@ final class Task_Controller
     {
         $filters = Request::parameters();
 
-        $tasks = Task::where('user_id', '=', Auth::user()->id);
+        $tasks = Task::where('user_id', '=', Auth::user()->id)
+            ->orderby('complete', 'DESC');
         if (isset($filters['description'])) {
             $tasks = $tasks->like('description', $filters['description'])
                 ->all();
@@ -68,7 +69,7 @@ final class Task_Controller
         } else {
             Request::redirect('tasks/create', [
                 'values' => $validation->values,
-                'errors' => $validation->errors
+                'errors' => $validation->errors,
             ]);
         }
 

@@ -32,7 +32,7 @@ class MiddlewareManager extends Singleton
             $middleware = get_val($registered_middleware, $middleware_name, null);
 
             // @phpstan-ignore booleanNot.alwaysFalse
-            if (!$middleware) {
+            if (! $middleware) {
                 throw new App_Exception('error', 'Middleware not found', ['name' => $middleware_name]);
             }
             $middleware->handle();
