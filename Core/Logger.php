@@ -18,7 +18,7 @@ final class Logger extends Singleton
     /**
      * @param  string|array<string,mixed>|array<mixed>  $extra
      */
-    public static function log(string $level, string $message, string|array $extra, string $stack_trace): void
+    public static function log(string $level, string $message, string|array $extra = '', string $stack_trace = ''): void
     {
         $now = date('Y-m-d G:i:s');
         $level = mb_strtoupper($level);
@@ -29,7 +29,7 @@ final class Logger extends Singleton
 
     public static function flush(): void
     {
-        $log_file = get_base_path().'Storage/basic.log';
+        $log_file = get_base_path() . 'Storage/basic.log';
 
         File::write_lines($log_file, self::get_instance()->logs);
     }

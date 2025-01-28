@@ -11,8 +11,6 @@ abstract class ORM
     /** @var array<string,mixed> */
     public array $attributes;
 
-    public int $id;
-
     public static string $table_name;
 
     public Database $database;

@@ -1332,3 +1332,245 @@ ain}
 #8 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks', Object(Core\HttpMethod))
 #9 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
 #10 {main}
+2025-01-28 20:17:31 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(33): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:19:13 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(33): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:19:14 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(33): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:20:42 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(33): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:17 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:18 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:46 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:47 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:51 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:52 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:52 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:53 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:53 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:53 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:53 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:53 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:22:54 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(34): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:23:31 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(33): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:23:32 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(33): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:24:21 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(33): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:24:21 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(33): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:25:28 | INFO | prepared query | {"database":{},"select":[],"wheres":[{"type":"where","column":"id","operator":"=","value":1}],"joins":[],"table_name":"tasks"} | 
+2025-01-28 20:25:28 | INFO | prepared query | {"database":{},"select":[],"wheres":[{"type":"where","column":"id","operator":"=","value":1},{"type":"where","column":"id","operator":"=","value":3}],"joins":[],"table_name":"users"} | 
+2025-01-28 20:25:28 | ERROR | You do not have access to this resource or it does not exist | {"table_name":"users","id":3} | #0 /home/reusebio/php-basic-framework/Libs/Auth.php(50): Core\ORM::find(3, true)
+#1 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(33): Libs\Auth::user()
+#2 [internal function]: App\Controllers\Task_Controller::show(1)
+#3 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '1')
+#4 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/1', Object(Core\HttpMethod))
+#5 /home/reusebio/php-basic-framework/index.php(30): require('/home/reusebio/...')
+#6 {main}
+2025-01-28 20:27:56 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:27:56 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:27:56 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:28:32 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:28:32 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:28:32 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:29:03 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:29:03 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:29:04 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:29:04 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:29:24 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:29:24 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:37:40 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:37:54 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:38:10 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:38:53 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:39:24 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:39:29 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:39:37 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:39:43 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:39:47 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:39:58 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:40:00 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:40:03 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:40:03 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:40:05 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:40:12 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:40:12 | INFO | INSERT INTO tasks (description, complete, user_id) VALUES (:description, :complete, :user_id); | "" | 
+2025-01-28 20:40:12 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:40:12 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:40:12 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:40:14 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:40:15 | INFO | SELECT * FROM tasks  | "" | 
+2025-01-28 20:41:18 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:41:18 | INFO | SELECT * FROM tasks  WHERE  user_id = ? | "" | 
+2025-01-28 20:41:23 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:41:23 | INFO | SELECT * FROM tasks  WHERE  user_id = ? AND description LIKE ?  | "" | 
+2025-01-28 20:41:25 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:41:25 | INFO | SELECT * FROM tasks  WHERE  user_id = ? AND description LIKE ?  | "" | 
+2025-01-28 20:41:44 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:41:44 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:41:47 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:41:47 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:41:51 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:41:51 | INFO | SELECT * FROM tasks  WHERE  user_id = ? | "" | 
+2025-01-28 20:42:17 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:42:17 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:42:20 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:42:20 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:42:20 | INFO | UPDATE tasks SET description = :description, complete = :complete WHERE id = 6 | "" | 
+2025-01-28 20:42:20 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:42:20 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:42:22 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:42:22 | INFO | SELECT * FROM tasks  WHERE  user_id = ? | "" | 
+2025-01-28 20:42:27 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:42:27 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:33 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:33 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:37 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:37 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:39 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:39 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:39 | INFO | UPDATE tasks SET description = :description, complete = :complete WHERE id = 6 | "" | 
+2025-01-28 20:43:39 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:39 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:41 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:41 | INFO | SELECT * FROM tasks  WHERE  user_id = ? | "" | 
+2025-01-28 20:43:42 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:42 | INFO | SELECT * FROM tasks  WHERE  user_id = ? | "" | 
+2025-01-28 20:43:44 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:44 | INFO | SELECT * FROM tasks  WHERE  user_id = ? | "" | 
+2025-01-28 20:43:55 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:55 | INFO | INSERT INTO tasks (description, complete, user_id) VALUES (:description, :complete, :user_id); | "" | 
+2025-01-28 20:43:55 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:55 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:43:55 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:44:30 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:44:30 | INFO | SELECT * FROM tasks  WHERE  user_id = ? | "" | 
+2025-01-28 20:46:21 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:46:21 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:46:26 | INFO | SELECT * FROM tasks  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:46:26 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:46:39 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:46:39 | INFO | SELECT * FROM tasks  WHERE  user_id = ? | "" | 
+2025-01-28 20:46:50 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
+2025-01-28 20:46:50 | INFO | SELECT * FROM tasks  WHERE  user_id = ? AND description LIKE ?  | "" | 

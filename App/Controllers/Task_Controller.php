@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Models\Task;
+use App\Policies\TaskPolicy;
 use Core\Render;
 use Core\Request;
 use Core\Validation;
+use Libs\Auth;
 
 final class Task_Controller
 {
@@ -15,11 +17,12 @@ final class Task_Controller
     {
         $filters = Request::parameters();
 
+        $tasks = Task::where('user_id', '=', Auth::user()->id);
         if (isset($filters['description'])) {
-            $tasks = Task::like('description', $filters['description'])
+            $tasks = $tasks->like('description', $filters['description'])
                 ->all();
         } else {
-            $tasks = Task::all();
+            $tasks = $tasks->all();
         }
 
         Render::view('tasks/index', ['tasks' => $tasks]);
@@ -28,6 +31,7 @@ final class Task_Controller
     public static function show(int $id): void
     {
         $task = Task::find($id);
+        TaskPolicy::view($task, Auth::user());
 
         Render::view('tasks/show', ['task' => $task]);
     }
@@ -40,6 +44,7 @@ final class Task_Controller
     public static function edit(int $id): void
     {
         $task = Task::find($id);
+        TaskPolicy::view($task, Auth::user());
 
         Render::view('tasks/edit', ['task' => $task]);
     }
@@ -49,15 +54,17 @@ final class Task_Controller
         $attributes = Request::attributes();
 
         $attributes['complete'] = (int) get_val($attributes, 'complete', 0);
+        $attributes['user_id'] = Auth::user()->id;
 
         $validation = (new Validation($attributes))
             ->add_rule('description', ['required'])
-            ->add_rule('complete', ['required', 'int']);
+            ->add_rule('complete', ['required', 'int'])
+            ->add_rule('user_id', ['required', 'int']);
 
         if ($validation->validate()) {
-            $user = Task::create($validation->values);
+            $task = Task::create($validation->values);
 
-            Request::redirect("/tasks/$user->id");
+            Request::redirect("/tasks/$task->id");
         } else {
             Request::redirect('tasks/create', [
                 'values' => $validation->values,
@@ -70,6 +77,7 @@ final class Task_Controller
     public static function update(int $id): void
     {
         $task = Task::find($id);
+        TaskPolicy::view($task, Auth::user());
 
         $attributes = Request::attributes();
 
@@ -98,8 +106,10 @@ final class Task_Controller
 
     public static function destroy(int $id): void
     {
-        $user = Task::find($id);
-        $user->delete();
+        $task = Task::find($id);
+        TaskPolicy::view($task, Auth::user());
+
+        $task->delete();
 
         Request::redirect('/users');
     }

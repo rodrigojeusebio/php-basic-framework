@@ -71,4 +71,10 @@ final class Request
         header("Location: $url", true, 303);
         exit;
     }
+
+    public static function unauthorized(): never
+    {
+        Render::page('default_pages/401');
+        die;
+    }
 }

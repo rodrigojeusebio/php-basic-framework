@@ -64,6 +64,7 @@ final class Database extends Singleton
      */
     public function prepared_query(string $query, array $attributes = []): array
     {
+        Logger::log('info', $query);
         $result = [];
 
         $query = $this->database->prepare($query);
@@ -75,6 +76,7 @@ final class Database extends Singleton
              */
             $result = $query->fetchAll(mode: PDO::FETCH_ASSOC);
         }
+        $this->clear();
 
         return $result;
     }
@@ -243,5 +245,13 @@ final class Database extends Singleton
         }
 
         return [$sql, $attributes];
+    }
+
+    public function clear(): void
+    {
+        $this->wheres = [];
+        $this->joins = [];
+        $this->select = [];
+        $this->table_name = '';
     }
 }
