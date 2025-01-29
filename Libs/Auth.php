@@ -29,6 +29,14 @@ class Auth extends Singleton
         Session::set('user_id', $id);
     }
 
+    public static function check(): bool
+    {
+        if (Session::get('user_id')) {
+            return true;
+        }
+
+        return false;
+    }
     public static function guest(): bool
     {
         if (Session::get('user_id')) {

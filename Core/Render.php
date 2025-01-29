@@ -35,11 +35,12 @@ final class Render extends Singleton
         extract(self::$global_variables);
         extract($variables);
         $template_path = self::get_view_path($path);
-        include_once $template_path;
+        $preprocessor_file = (new Preprocessor($template_path))->process();
+        include_once $preprocessor_file;
     }
 
     private static function get_view_path(string $path): string
     {
-        return get_app_path().'Resources/Views/'.$path.'.php';
+        return get_app_path() . 'Resources/Views/' . $path . '.php';
     }
 }
