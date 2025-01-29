@@ -1608,3 +1608,21 @@ ain}
 2025-01-28 20:58:30 | INFO | SELECT * FROM tasks  WHERE  user_id = ? AND description LIKE ?  ORDER BY  complete DESC | "" | 
 2025-01-28 20:58:32 | INFO | SELECT * FROM users  WHERE  id = ? LIMIT 1 | "" | 
 2025-01-28 20:58:32 | INFO | SELECT * FROM tasks  WHERE  user_id = ? AND description LIKE ?  ORDER BY  complete DESC | "" | 
+2025-01-29 21:07:42 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/layouts/default.php | "" | 
+2025-01-29 21:07:42 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/default_pages/ExceptionViewer.php | "" | 
+2025-01-29 21:07:53 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/layouts/default.php | "" | 
+2025-01-29 21:07:53 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/default_pages/ExceptionViewer.php | "" | 
+2025-01-29 21:09:00 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/layouts/default.php | "" | 
+2025-01-29 21:09:00 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/default_pages/ExceptionViewer.php | "" | 
+2025-01-29 21:09:01 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/layouts/default.php | "" | 
+2025-01-29 21:09:01 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/default_pages/ExceptionViewer.php | "" | 
+2025-01-29 21:09:04 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/layouts/default.php | "" | 
+2025-01-29 21:09:04 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/default_pages/ExceptionViewer.php | "" | 
+2025-01-29 21:10:36 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/layouts/default.php | "" | 
+2025-01-29 21:10:36 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/default_pages/ExceptionViewer.php | "" | 
+2025-01-29 21:10:37 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/layouts/default.php | "" | 
+2025-01-29 21:10:37 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/default_pages/ExceptionViewer.php | "" | 
+2025-01-29 21:10:56 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/layouts/default.php | "" | 
+2025-01-29 21:10:56 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/default_pages/ExceptionViewer.php | "" | 
+2025-01-29 21:11:01 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/layouts/default.php | "" | 
+2025-01-29 21:11:01 | INFO | /home/reusebio/php-basic-framework//App/Resources/Views/default_pages/ExceptionViewer.php | "" | 

@@ -19,7 +19,6 @@ class Login_Controller
 
     public static function store()
     {
-
         $attributes = Request::attributes();
 
         $validation = (new Validation($attributes))

@@ -17,8 +17,6 @@ final class ExceptionHandler
     {
         $message = $exception->getMessage();
         $stack_trace = $exception->getTraceAsString();
-        // $stack_trace = self::build_basic_trace($exception->getTrace());
-        // $stack_trace = implode("\n", $stack_trace);
 
         if ($exception instanceof App_Exception) {
             $level = $exception->level;

@@ -51,7 +51,7 @@ use Core\Request;
                         </td>
                         <td class="px-6 py-4">
                             <span class="<?= $task->complete ? 'text-green-600' : 'text-red-600' ?>">
-                                <?= $task->complete ? 'Yes' : 'No' ?>
+                                {{ $task->complete ? 'Yes' : 'No' }}
                             </span>
                         </td>
                         <td class="px-6 py-4 space-x-2">
