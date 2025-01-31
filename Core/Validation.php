@@ -30,7 +30,9 @@ class Validation
     /**
      * @param  array<string,mixed>  $values
      */
-    public function __construct(public array $values) {}
+    public function __construct(public array $values)
+    {
+    }
 
     public function __get(string $field): mixed
     {
@@ -47,10 +49,8 @@ class Validation
             $callback->evaluate($this);
         }
 
-        if (empty($this->errors)) {
-            // Array flip to make the array with the same keys as values
-            $this->values = array_intersect_key($this->values, array_flip($this->fields));
-        }
+        // Array flip to make the array with the same keys as values
+        $this->values = array_intersect_key($this->values, array_flip($this->fields));
 
         return empty($this->errors);
     }
@@ -119,7 +119,8 @@ class Rule
         public string $field,
         public string $rule,
         public ?string $custom_message = null,
-    ) {}
+    ) {
+    }
 
     public function evaluate(Validation $validation, mixed $value): void
     {
@@ -133,7 +134,7 @@ class Rule
             default => throw new App_Exception('error', 'Validation rule is not supported', ['validation' => $this->rule])
         };
 
-        if (! $validate) {
+        if (!$validate) {
             $validation->add_error(
                 $this->field,
                 $this->custom_message ?: self::$validation_messages[$this->rule],
@@ -150,7 +151,8 @@ class Callback
     public function __construct(
         public string $field,
         public string|array|Closure $callable,
-    ) {}
+    ) {
+    }
 
     public function evaluate(Validation $validation): void
     {

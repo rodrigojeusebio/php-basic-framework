@@ -3,16 +3,15 @@
     <!-- Task Input -->
     <div class="space-y-2">
         <label for="description" class="block text-sm font-medium text-gray-700">Task Description</label>
-        <input type="text" id="description" name="description" placeholder="I will do..."
-            value="<?= htmlspecialchars(old('description', '')) ?>"
+        <input type="text" id="description" name="description" placeholder="I will do..." value="@old('description')"
             class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-slate-800 transition">
-        <?php if ($errors = error('description')) { ?>
-            <div class="mt-1 text-sm text-red-600">
-                <?php foreach ($errors as $value) { ?>
-                    <p><?= htmlspecialchars($value) ?></p>
-                <?php } ?>
-            </div>
-        <?php } ?>
+        @if(errors('description'))
+        <div class="mt-1 text-sm text-red-600">
+            @errors('description')
+            @error
+            @enderrors
+        </div>
+        @endif
     </div>
 
     <!-- complete Checkbox -->
@@ -23,13 +22,13 @@
                 class="h-4 w-4 text-slate-800 border-gray-300 rounded focus:ring-2 focus:ring-slate-800 transition">
             <label for="complete" class="text-sm text-gray-600">Yes</label>
         </div>
-        <?php if ($errors = error('complete')) { ?>
-            <div class="mt-1 text-sm text-red-600">
-                <?php foreach ($errors as $value) { ?>
-                    <p><?= htmlspecialchars($value) ?></p>
-                <?php } ?>
-            </div>
-        <?php } ?>
+        @if(errors('complete'))
+        <div class="mt-1 text-sm text-red-600">
+            @errors('complete')
+            @error
+            @enderrors
+        </div>
+        @endif
     </div>
 
     <!-- Submit Button -->

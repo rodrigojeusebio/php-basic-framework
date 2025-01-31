@@ -26,15 +26,16 @@ class Login_Controller
             ->add_rule('password', ['required', 'string']);
 
         if ($validation->validate()) {
-            if (! Auth::attempt($validation->email, $validation->password)) {
+            if (!Auth::attempt($validation->email, $validation->password)) {
                 $validation->errors['password'][] = 'Email and password do not match';
             }
         }
 
         if ($validation->errors) {
-            Session::flash('errors', $validation->errors);
-            Session::flash('values', $validation->values);
-            Request::redirect('/login');
+            Request::redirect('/login', [
+                'errors' => $validation->errors,
+                'values' => $validation->values,
+            ]);
         }
 
         Request::redirect('/');

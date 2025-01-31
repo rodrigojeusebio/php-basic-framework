@@ -4,19 +4,19 @@ namespace Libs;
 
 use App\Models\User;
 use Core\App_Exception;
+use Core\Logger;
 use Core\Session;
 
 class Auth extends Singleton
 {
     public static function attempt(string $email, string $password): bool
     {
-        Session::regenerate();
 
         /** @var User */
         $user = (new User)->where('email', '=', $email)->find();
-
         if ($user->loaded() && password_verify($password, $user->password)) {
             self::login($user->id);
+            Session::regenerate();
 
             return true;
         }

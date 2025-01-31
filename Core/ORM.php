@@ -185,6 +185,6 @@ abstract class ORM
 
     final public function loaded(): bool
     {
-        return isset($this->id);
+        return isset($this->attributes['id']);
     }
 }
