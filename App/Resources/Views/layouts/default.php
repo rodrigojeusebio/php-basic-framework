@@ -25,11 +25,11 @@ use Core\Config;
 
 <body class="bg-slate-800">
     <div class="flex flex-col min-h-screen">
-        <?php include get_app_path().'Resources/Views/layouts/navigation.php' ?>
+        @component(get_app_path().'Resources/Views/layouts/navigation.php')
         <main class="flex-1 p-8 bg-slate-100">
             <div class="bg-white rounded-md shadow-md p-6">
                 <div class="rounded-md p-4 my-4 border border-error">
-                    <?php include $__view ?>
+                    @component($__view)
                 </div>
             </div>
         </main>
