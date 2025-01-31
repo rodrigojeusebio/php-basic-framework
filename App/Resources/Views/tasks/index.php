@@ -17,7 +17,7 @@ use Core\Request;
             <form method="GET" action="/tasks">
                 <div class="flex items-center gap-2">
                     <input type="text" name="description" placeholder="Search for a task"
-                        value="{{Request::get('description', '')}}?>"
+                        value="{{Request::get('description', '')}}"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800 transition">
                     <button type="submit"
                         class="bg-gray-800 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition">
