@@ -9,24 +9,29 @@ use Libs\Singleton;
 final class Render extends Singleton
 {
     /**
-     * Variables that will always be set on the view
+     * Global variables available in all views.
      *
-     * @var array<string,mixed>
+     * @var array<string, mixed>
      */
     private static array $global_variables = ['errors' => [], 'attributes' => []];
 
     /**
-     * @param  array<string,mixed>  $variables
+     * Render a view inside the default layout.
+     *
+     * @param string $path
+     * @param array<string, mixed> $variables
      */
     public static function view(string $path, array $variables = []): void
     {
-        $template_path = self::get_view_path($path);
         $default_layout = 'layouts/default';
-        self::page($default_layout, array_merge(['__view' => $template_path], $variables));
+        self::page($default_layout, array_merge(['__view' => $path], $variables));
     }
 
     /**
-     * @param  array<string,mixed>  $variables
+     * Render a full page.
+     *
+     * @param string $path
+     * @param array<string, mixed> $variables
      */
     public static function page(string $path, array $variables = []): void
     {
@@ -34,35 +39,35 @@ final class Render extends Singleton
         extract($variables);
 
         $template_path = self::get_view_path($path);
-
-        include $template_path;
-
         $compiled_file = self::compile_template($template_path);
 
         ob_clean();
         ob_start();
         include $compiled_file;
+        ob_end_flush();
     }
 
+    /**
+     * Resolve a view path to its full file path.
+     */
     private static function get_view_path(string $path): string
     {
         return get_app_path() . 'Resources/Views/' . $path . '.php';
     }
 
+    /**
+     * Convert a template into a compiled PHP file.
+     */
     public static function compile_template(string $template_path): string
     {
-        $cache_dir = __DIR__ . "/cache/"; // Directory for cached files
+        $cache_dir = __DIR__ . "/cache/";
 
-        // if (!is_dir($cache_dir)) {
-        //     mkdir($cache_dir, 0777, true);
-        // }
+        if (!is_dir($cache_dir)) {
+            mkdir($cache_dir, 0777, true);
+        }
 
-        $contents = (string) ob_get_contents();
-        // dd(htmlspecialchars($contents));
-        Logger::log('info', $contents);
-
-        $compiled_php = self::viewToPhp($contents);
-        ob_clean();
+        $template = file_get_contents($template_path) ?: '';
+        $compiled_php = self::viewToPhp($template);
 
         $cache_file = $cache_dir . md5_file($template_path) . '.php';
         file_put_contents($cache_file, $compiled_php);
@@ -70,59 +75,59 @@ final class Render extends Singleton
         return $cache_file;
     }
 
+    /**
+     * Convert Blade-like syntax into PHP.
+     */
     public static function viewToPhp(string $template): string
     {
-        // Handle Blade-like directives and other placeholders
         $patterns = [
-            // Control structures
-            '/@if\s*\((.*?)\)\s*(?=\n)/' => '<?php if ($1): ?>',
+            // Control Structures
+            '/@if\s*\((.*?)\)/' => '<?php if ($1): ?>',
             '/@else/' => '<?php else: ?>',
             '/@endif/' => '<?php endif; ?>',
-
-
-            '/@foreach\(([^,]+),\s*([^,]+),\s*([^)]+)\)/' => '<?php foreach ($1 as $2 => $3): ?>',
-            '/@foreach\(([^,]+),\s*([^)]+)\)/' => '<?php foreach ($1 as $2): ?>',
+            '/@foreach\s*\((.*?)\)/' => '<?php foreach ($1): ?>',
             '/@endforeach/' => '<?php endforeach; ?>',
+            '/@for\s*\((.*?)\)/' => '<?php for ($1): ?>',
             '/@endfor/' => '<?php endfor; ?>',
-            '/@for\((.*?)\)/' => '<?php for ($1): ?>',
             '/@auth/' => '<?php if (Auth::check()): ?>',
             '/@guest/' => '<?php if (Auth::guest()): ?>',
             '/@endauth|@endguest/' => '<?php endif; ?>',
 
-            // Component system
+            // Include - Support both strings and variables
+            '/@include\(\s*[\'"](.+?)[\'"]\s*\)/' =>
+                '<?php include Render::compile_template(Render::get_view_path("$1")); ?>',
+            '/@include\(\s*(.*?)\s*\)/' =>
+                '<?php include Render::compile_template($1); ?>',
+
+            // Component System
             '/@component\(\s*[\'"](.+?)[\'"]\s*,\s*(\[.*?\])\s*\)/' =>
-                '<?php extract($2); component($1)"; ?>',
+                '<?php extract($2); component("$1"); ?>',
             '/@component\(\s*[\'"](.+?)[\'"]\s*\)/' =>
-                '<?php components($1)"; ?>',
+                '<?php component("$1"); ?>',
             '/@endcomponent/' => '',
 
-            // Old input retrieval
+            // Old Input Handling
             '/@old\(\s*[\'"](.+?)[\'"]\s*,\s*[\'"](.+?)[\'"]\s*\)/' =>
                 '<?= htmlspecialchars(old("$1", "$2")) ?>',
             '/@old\(\s*[\'"](.+?)[\'"]\s*\)/' =>
                 '<?= htmlspecialchars(old("$1", "")) ?>',
 
-            // Error handling
+            // Error Handling
             '/@errors\(\s*[\'"](.+?)[\'"]\s*\)/' =>
                 '<?php foreach (errors("$1") as $error): ?>',
             '/@error/' => '<?= htmlspecialchars($error) ?>',
             '/@enderrors/' => '<?php endforeach; ?>',
-            '/@method\((.*?)\)/' => '<input type="hidden" name="_method" value="$1">',
 
-            // Handle {{ $value }} escaping
-            '/{{\s*(?!\!)(.*?)\s*}}/' => '<?= htmlspecialchars($1) ?>',
+            // Form Method Spoofing
+            '/@method\((.*?)\)/' => '<input type="hidden" name="_method" value="<?= $1 ?>">',
 
-            // Handle {{ ! $value ! }} raw output
-            '/{{\s*\!(.*?)\!\s*}}/' => '<?= $1 ?>',
+            // Variable Output
+            '/{{\s*(?!\!)(.*?)\s*}}/' => '<?= htmlspecialchars($1) ?>', // Escaped output
+            '/{{\s*\!(.*?)\!\s*}}/' => '<?= $1 ?>', // Raw output
         ];
 
-
-        $value = "<?php use Libs\Auth;use Core\Request; ?>";
-
-        // Replace Blade-like directives with PHP code
-        $value .= (string) preg_replace(array_keys($patterns), array_values($patterns), (string) $template);
-        return $value;
+        return "<?php use Libs\Auth; use Core\Request; use Core\Render; ?>" .
+            preg_replace(array_keys($patterns), array_values($patterns), $template);
     }
-
 }
 

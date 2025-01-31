@@ -1,4 +1,4 @@
-<?php
+<?php use Libs\Auth; use Core\Request; ?><?php
 use Core\Config;
 
 ?>
@@ -25,10 +25,11 @@ use Core\Config;
 
 <body class="bg-slate-800">
     <div class="flex flex-col min-h-screen">
+        <?php include Render::compile_template(get_app_path(); ?> . 'Resources/Views/layouts/navigation.php')
         <main class="flex-1 p-8 bg-slate-100">
             <div class="bg-white rounded-md shadow-md p-6">
                 <div class="rounded-md p-4 my-4 border border-error">
-                    @include($__view)
+                    <?php include Render::compile_template($__view); ?>
                 </div>
             </div>
         </main>

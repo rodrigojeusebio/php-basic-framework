@@ -1,4 +1,4 @@
-<?php
+<?php use Libs\Auth; use Core\Request; use Core\Render; ?><?php
 use Core\Config;
 
 ?>
@@ -28,7 +28,7 @@ use Core\Config;
         <main class="flex-1 p-8 bg-slate-100">
             <div class="bg-white rounded-md shadow-md p-6">
                 <div class="rounded-md p-4 my-4 border border-error">
-                    @include($__view)
+                    <?php include Render::compile_template($__view); ?>
                 </div>
             </div>
         </main>

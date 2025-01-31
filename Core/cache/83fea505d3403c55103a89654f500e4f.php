@@ -1,4 +1,4 @@
-<?php use Libs\Auth;use Libs\Request; ?><!DOCTYPE html>
+<?php use Libs\Auth; use Core\Request; use Core\Render; ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
