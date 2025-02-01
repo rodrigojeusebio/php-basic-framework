@@ -83,18 +83,18 @@ final class Task_Controller
         $attributes = Request::attributes();
 
         $attributes['complete'] = (int) get_val($attributes, 'complete', 0);
+        $attributes['user_id'] = Auth::user()->id;
 
         $validation = (new Validation($attributes))
-            ->add_rule('task', ['required'])
-            ->add_rule('complete', ['required', 'int']);
+            ->add_rule('description', ['required'])
+            ->add_rule('complete', ['required', 'int'])
+            ->add_rule('user_id', ['required', 'int']);
 
-        if ($validation) {
-
+        if ($validation->validate()) {
             $task->update($validation->values);
-
         } else {
             Request::redirect(
-                "/tasks/edit/$id",
+                "/tasks/$id/edit",
                 [
                     'values' => $validation->values,
                     'errors' => $validation->errors,
