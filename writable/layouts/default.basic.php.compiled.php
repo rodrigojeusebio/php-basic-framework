@@ -28,7 +28,7 @@ use Core\Config;
         <main class="flex-1 p-8 bg-slate-100">
             <div class="bg-white rounded-md shadow-md p-6">
                 <div class="rounded-md p-4 my-4 border border-error">
-<?  $__compiled_view = self::compile(self::get_view_path($__view)); include $__compiled_view  ?>
+<?  use Libs\BasicTemplater;  ?> <?  $__compiled_view = BasicTemplater::compile(BasicTemplater::get_view_path($__view)); include $__compiled_view  ?>
                 </div>
             </div>
         </main>
