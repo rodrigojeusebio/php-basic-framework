@@ -47,6 +47,15 @@ class Auth extends Singleton
         return false;
     }
 
+    public static function id(): int
+    {
+        $user_id = Session::get('user_id');
+        if (is_int($user_id)) {
+            return $user_id;
+        }
+        throw new App_Exception('error', 'Trying to access user, but no user is logged in');
+    }
+
     public static function user(): User
     {
         $user_id = Session::get('user_id');

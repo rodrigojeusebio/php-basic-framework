@@ -83,7 +83,7 @@ final class Task_Controller
         $attributes = Request::attributes();
 
         $attributes['complete'] = (int) get_val($attributes, 'complete', 0);
-        $attributes['user_id'] = Auth::user()->id;
+        $attributes['user_id'] = Auth::id();
 
         $validation = (new Validation($attributes))
             ->add_rule('description', ['required'])
