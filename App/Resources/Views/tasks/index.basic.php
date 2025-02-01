@@ -1,5 +1,4 @@
 <?php
-use Core\Request;
 ?>
 <div class="space-y-6">
     <!-- Header Section -->

@@ -15,6 +15,7 @@ abstract class ORM
     public array $attributes;
 
     public static string $table_name;
+
     public int $id;
 
     public Database $database;

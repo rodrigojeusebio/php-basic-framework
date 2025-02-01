@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Core;
 
 use Libs\Singleton;
+use RuntimeException;
 
 final class Render extends Singleton
 {
@@ -14,28 +15,8 @@ final class Render extends Singleton
      * @var array<string,mixed>
      */
     private static array $global_variables = ['errors' => [], 'attributes' => []];
-    private static bool $auth_imported = false; // Track if Auth has been imported
 
-    /**
-     * @var array<string>
-     */
-    private static array $supported_syntax = [
-        '{{',
-        '@auth',
-        '@endauth',
-        '@guest',
-        '@endguest',
-        '@else',
-        '@component',
-        '@foreach',
-        '@endforeach',
-        '@if',
-        '@endif',
-        '@method',
-        '@old',
-        '@errors',
-        '@error',
-    ];
+    private static bool $auth_imported = false; // Track if Auth has been imported
 
     /**
      * @param  array<string,mixed>  $variables
@@ -46,7 +27,8 @@ final class Render extends Singleton
         $template_path = $path;
         $default_layout = 'layouts/default';
         self::page(
-            $default_layout, array_merge(['__view' => $template_path], $variables)
+            $default_layout,
+            array_merge(['__view' => $template_path], $variables)
         );
     }
 
@@ -62,9 +44,10 @@ final class Render extends Singleton
         $compile_view = self::compile($template_path);
         include $compile_view;
     }
+
     private static function get_view_path(string $path): string
     {
-        return get_app_path() . 'Resources/Views/' . $path . '.basic.php';
+        return get_app_path().'Resources/Views/'.$path.'.basic.php';
     }
 
     /**
@@ -75,7 +58,7 @@ final class Render extends Singleton
     {
         $contents = file_get_contents($template_path);
         if ($contents === false) {
-            throw new \RuntimeException("Cannot read template file: $template_path");
+            throw new RuntimeException("Cannot read template file: $template_path");
         }
         $contents_file = explode("\n", $contents);
         $processed_lines = [];
@@ -86,7 +69,7 @@ final class Render extends Singleton
 
         // Save the compiled file to a temporary file (or a cache) and return its path.
         // Here we simply save to the same directory with a .compiled.php extension.
-        $compiled_path = $template_path . '.compiled.php';
+        $compiled_path = $template_path.'.compiled.php';
         file_put_contents($compiled_path, implode("\n", $processed_lines));
 
         return $compiled_path;
@@ -102,10 +85,10 @@ final class Render extends Singleton
 
         // === Handle Block Directives with Parentheses (manual parsing) ===
 
-        $php_open = "<? ";
-        $php_close = " ?>";
+        $php_open = '<? ';
+        $php_close = ' ?>';
         // @if(...) --> $php_open if(...): $php_close
-        if (strpos($trimmed, "@if(") === 0) {
+        if (mb_strpos($trimmed, '@if(') === 0) {
             $condition = self::extract_between_parentheses($trimmed);
             if ($condition !== null) {
                 return "$php_open if({$condition}): $php_close";
@@ -113,7 +96,7 @@ final class Render extends Singleton
         }
 
         // @foreach(...) --> $php_open foreach(...): $php_close
-        if (strpos($trimmed, '@foreach(') === 0) {
+        if (mb_strpos($trimmed, '@foreach(') === 0) {
             $expression = self::extract_between_parentheses($trimmed);
             if ($expression !== null) {
                 return "$php_open foreach({$expression}): $php_close";
@@ -121,7 +104,7 @@ final class Render extends Singleton
         }
 
         // @component('path/to/component')
-        if (strpos($trimmed, '@component(') === 0) {
+        if (mb_strpos($trimmed, '@component(') === 0) {
             $component_view = self::extract_between_parentheses($trimmed);
 
             if ($component_view !== null) {
@@ -131,19 +114,21 @@ final class Render extends Singleton
                 if (preg_match('/^\$[\w]+/', $component_view)) {
                     // It's a variable -> Resolve inside PHP dynamically
                     return "$php_open \$__compiled_view = self::compile(self::get_view_path({$component_view})); include \$__compiled_view $php_close";
-                } else {
-                    // It's a string -> Resolve at compile time
-                    $component_view = trim($component_view, " '\"");
-                    $compiled_component = self::compile(self::get_view_path($component_view));
-                    return "$php_open include '{$compiled_component}'; $php_close";
                 }
+                // It's a string -> Resolve at compile time
+                $component_view = trim($component_view, " '\"");
+                $compiled_component = self::compile(self::get_view_path($component_view));
+
+                return "$php_open include '{$compiled_component}'; $php_close";
+
             }
         }
         // @method('PUT') --> <input type="hidden" name="_method" value="PUT">
-        if (strpos($trimmed, '@method(') === 0) {
+        if (mb_strpos($trimmed, '@method(') === 0) {
             $method = self::extract_between_parentheses($trimmed);
             if ($method !== null) {
                 $method = trim($method, " '\"");
+
                 return "<input type=\"hidden\" name=\"_method\" value=\"{$method}\">";
             }
         }
@@ -151,34 +136,37 @@ final class Render extends Singleton
 
         if (str_contains($trimmed, '@old(')) {
             // We allow @old to appear inline.
-            while (($start = strpos($line, '@old(')) !== false) {
-                $extracted = self::extract_between_parentheses(substr($line, $start));
+            while (($start = mb_strpos($line, '@old(')) !== false) {
+                $extracted = self::extract_between_parentheses(mb_substr($line, $start));
                 if ($extracted === null) {
                     break;
                 }
                 $replacement = "$php_open echo htmlspecialchars(old($extracted) ?? ''); $php_close";
                 // Replace the first occurrence
-                $line = substr_replace($line, $replacement, $start, strlen("@old({$extracted})"));
+                $line = substr_replace($line, $replacement, $start, mb_strlen("@old({$extracted})"));
             }
+
             return $line;
         }
 
         // @error('field') --> $php_open if(isset($errors['field'])): $php_close
-        if (strpos($trimmed, '@errors(') === 0) {
+        if (mb_strpos($trimmed, '@errors(') === 0) {
             $field = self::extract_between_parentheses($trimmed);
             if ($field !== null) {
                 $field = trim($field, " '\"");
+
                 return "$php_open foreach(errors('{$field}') as \$error): $php_close";
             }
         }
-        // @error --> $php_open $error $php_close 
-        elseif (strpos($trimmed, '@error') !== false) {
+        // @error --> $php_open $error $php_close
+        elseif (mb_strpos($trimmed, '@error') !== false) {
             // We allow @old to appear inline.
-            while (($start = strpos($line, '@error')) !== false) {
+            while (($start = mb_strpos($line, '@error')) !== false) {
                 $replacement = "$php_open echo htmlspecialchars(\$error); $php_close";
                 // Replace the first occurrence
-                $line = substr_replace($line, $replacement, $start, strlen("@error"));
+                $line = substr_replace($line, $replacement, $start, mb_strlen('@error'));
             }
+
             return $line;
         }
 
@@ -201,9 +189,10 @@ final class Render extends Singleton
             return "$php_open else: $php_close";
         }
         // Ensure `use Libs\Auth;` is added only once at the top
-        if (($trimmed === '@auth' || $trimmed === '@guest') && !self::$auth_imported) {
+        if (($trimmed === '@auth' || $trimmed === '@guest') && ! self::$auth_imported) {
             self::$auth_imported = true;
-            return "$php_open use Libs\Auth; $php_close\n" . self::process_line($trimmed);
+
+            return "$php_open use Libs\Auth; $php_close\n".self::process_line($trimmed);
         }
         // @auth --> $php_open if(Auth::check()): $php_close
         if ($trimmed === '@auth') {
@@ -219,14 +208,14 @@ final class Render extends Singleton
 
         // Replace all occurrences of {{ expression }} with: $php_open echo htmlspecialchars(expression); $php_close
         // We use a loop in case there are multiple per line.
-        while (($start = strpos($line, '{{')) !== false) {
-            $end = strpos($line, '}}', $start);
+        while (($start = mb_strpos($line, '{{')) !== false) {
+            $end = mb_strpos($line, '}}', $start);
             if ($end === false) {
                 // No closing braces, abort processing this line.
                 break;
             }
             // Extract the content inside the braces.
-            $expression = trim(substr($line, $start + 2, $end - $start - 2));
+            $expression = trim(mb_substr($line, $start + 2, $end - $start - 2));
             $replacement = "$php_open echo htmlspecialchars({$expression}); $php_close";
             $line = substr_replace($line, $replacement, $start, ($end + 2) - $start);
         }
@@ -241,16 +230,17 @@ final class Render extends Singleton
      *
      * For example, given: "@if(Auth::check())" it returns "Auth::check()"
      *
-     * @param string $directive The full directive line.
+     * @param  string  $directive  The full directive line.
      * @return string|null Returns the extracted string or null if not found.
      */
     private static function extract_between_parentheses(string $directive): ?string
     {
-        $start = strpos($directive, '(');
-        $end = strrpos($directive, ')');
+        $start = mb_strpos($directive, '(');
+        $end = mb_strrpos($directive, ')');
         if ($start === false || $end === false || $end <= $start) {
             return null;
         }
-        return substr($directive, $start + 1, $end - $start - 1);
+
+        return mb_substr($directive, $start + 1, $end - $start - 1);
     }
 }

@@ -1,5 +1,4 @@
 <?php
-use Core\Config;
 
 ?>
 <!DOCTYPE html>

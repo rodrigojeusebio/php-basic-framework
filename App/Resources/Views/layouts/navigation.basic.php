@@ -1,5 +1,4 @@
 <?php
-use Core\Config;
 ?>
 
 <header class="bg-slate-800 text-white py-4 shadow-md">
