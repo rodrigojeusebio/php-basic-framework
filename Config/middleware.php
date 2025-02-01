@@ -6,6 +6,6 @@ use App\Middleware\GuestMiddleware;
 // Register middlewares
 // alias => middleware instance
 return [
-    'auth' => new AuthMiddleware,
-    'guest' => new GuestMiddleware,
+    'auth' => AuthMiddleware::class,
+    'guest' => GuestMiddleware::class,
 ];
