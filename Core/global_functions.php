@@ -42,6 +42,11 @@ function get_base_path(): ?string
     return Config::get('base_path');
 }
 
+function get_writable_path(): ?string
+{
+    return Config::get('writable_path');
+}
+
 /**
  * @template Tvalue
  *
@@ -67,7 +72,7 @@ function old(string $key, mixed $default = ''): mixed
 /**
  * @return array<string,string>
  */
-function error(string $key): array
+function errors(string $key): array
 {
     $flash = get_val(Session::get_flash(), 'errors', []);
 

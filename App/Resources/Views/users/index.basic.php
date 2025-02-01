@@ -39,21 +39,21 @@ use Core\Request;
                 </tr>
             </thead>
             <tbody class="[&amp;_tr:last-child]:border-0">
-                <?php foreach ($users as $user) { ?>
-                    <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-                        <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-                            <div class="flex items-center gap-3">
-                                <div class="grid gap-0.5 text-sm">
-                                    <div class="font-medium"><?= $user->name ?></div>
-                                </div>
+                @foreach ($users as $user)
+                <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                    <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                        <div class="flex items-center gap-3">
+                            <div class="grid gap-0.5 text-sm">
+                                <div class="font-medium">{{$user->name}}</div>
                             </div>
-                        </td>
-                        <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"><?= $user->email ?></td>
-                        <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-                            <a href="/users/<?= $user->id ?>" class="text-blue-600 hover:underline">Show</a>
-                        </td>
-                    </tr>
-                <?php } ?>
+                        </div>
+                    </td>
+                    <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">{{$user->email}}</td>
+                    <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                        <a href="/users/{{$user->id}}" class="text-blue-600 hover:underline">Show</a>
+                    </td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
 

@@ -16,6 +16,8 @@ abstract class ORM
 
     public static string $table_name;
 
+    public int $id;
+
     public Database $database;
 
     final public function __construct()

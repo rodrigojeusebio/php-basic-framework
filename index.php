@@ -21,6 +21,7 @@ Config::load_env(dirname(__FILE__).'/.env');
 // Set usefull paths
 Config::set('base_path', dirname(__FILE__).'/');
 Config::set('app_path', Config::get('base_path').'/App/');
+Config::set('writable_path', Config::get('base_path').'writable/');
 
 // Set global functions
 require_once dirname(__FILE__).'/Core/global_functions.php';
