@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Core;
 
-use App\Middleware\AuthMiddleware;
-use App\Middleware\GuestMiddleware;
+include_once Config::get('app_path') . 'Routes/web.php';
+include_once Config::get('app_path') . 'Routes/auth.php';
 
-include_once Config::get('app_path').'Routes/web.php';
-include_once Config::get('app_path').'Routes/auth.php';
+/** @var array<string, Middleware> */
+$middlewares = include get_base_path() . 'Config/middleware.php';
 
-MiddlewareManager::add_middleware('auth', new AuthMiddleware);
-MiddlewareManager::add_middleware('guest', new GuestMiddleware);
+foreach ($middlewares as $key => $middleware) {
+    MiddlewareManager::add_middleware($key, $middleware);
+}
 
 Session::start();
 Router::route(Request::uri(), Request::method());
