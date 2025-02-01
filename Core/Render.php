@@ -50,10 +50,6 @@ final class Render extends Singleton
         return get_app_path().'Resources/Views/'.$path.'.basic.php';
     }
 
-    /**
-     * This method compiles the template by processing each line.
-     * (For simplicity we split on newlines; a more robust parser would work on the entire file.)
-     */
     private static function compile(string $template_path): string
     {
         $contents = file_get_contents($template_path);
@@ -67,7 +63,7 @@ final class Render extends Singleton
             $processed_lines[] = self::process_line($line);
         }
 
-        // Save the compiled file to a temporary file (or a cache) and return its path.
+        // Save the compiled file to a temporary file and return its path.
         // Here we simply save to the same directory with a .compiled.php extension.
         $compiled_path = $template_path.'.compiled.php';
         file_put_contents($compiled_path, implode("\n", $processed_lines));
@@ -123,6 +119,7 @@ final class Render extends Singleton
 
             }
         }
+
         // @method('PUT') --> <input type="hidden" name="_method" value="PUT">
         if (mb_strpos($trimmed, '@method(') === 0) {
             $method = self::extract_between_parentheses($trimmed);
@@ -132,8 +129,8 @@ final class Render extends Singleton
                 return "<input type=\"hidden\" name=\"_method\" value=\"{$method}\">";
             }
         }
-        // @old('field') --> $php_open echo htmlspecialchars($_POST['field'] ?? ''); $php_close
 
+        // @old('field') --> $php_open echo htmlspecialchars(old('field') ?? ''); $php_close
         if (str_contains($trimmed, '@old(')) {
             // We allow @old to appear inline.
             while (($start = mb_strpos($line, '@old(')) !== false) {
@@ -149,7 +146,7 @@ final class Render extends Singleton
             return $line;
         }
 
-        // @error('field') --> $php_open if(isset($errors['field'])): $php_close
+        // @error('field') --> $php_open if(errors('field')): $php_close
         if (mb_strpos($trimmed, '@errors(') === 0) {
             $field = self::extract_between_parentheses($trimmed);
             if ($field !== null) {
@@ -169,8 +166,6 @@ final class Render extends Singleton
 
             return $line;
         }
-
-        // === Handle Single-line Directives (no parentheses) ===
 
         // @endif, @endforeach, @endauth, @endguest, @enderror
         $end_directives = [
@@ -203,8 +198,6 @@ final class Render extends Singleton
         if ($trimmed === '@guest') {
             return "$php_open if(Auth::guest()): $php_close";
         }
-
-        // === Handle Inline Variable Echo with Curly Braces ===
 
         // Replace all occurrences of {{ expression }} with: $php_open echo htmlspecialchars(expression); $php_close
         // We use a loop in case there are multiple per line.
