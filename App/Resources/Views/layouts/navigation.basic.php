@@ -1,7 +1,5 @@
 <?php
 use Core\Config;
-use Libs\Auth;
-
 ?>
 
 <header class="bg-slate-800 text-white py-4 shadow-md">
@@ -9,7 +7,7 @@ use Libs\Auth;
         <!-- Logo and App Name -->
         <div class="flex items-center space-x-4">
             <a href="/" class="flex items-center space-x-2">
-                <h1 class="text-2xl font-bold"><?= Config::get('app_name', 'PHP Basic Framework') ?></h1>
+                <h1 class="text-2xl font-bold">{{Config::get('app_name', 'PHP Basic Framework')}}</h1>
             </a>
             @auth
             <nav class="flex space-x-6 text-lg">

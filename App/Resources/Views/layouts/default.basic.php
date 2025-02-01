@@ -8,7 +8,7 @@ use Core\Config;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= Config::get('app_name', 'PHP basic framework') ?></title>
+    <title>{{Config::get('app_name', 'PHP basic framework')}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         h1,

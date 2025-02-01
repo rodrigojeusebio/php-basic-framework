@@ -1,7 +1,5 @@
 <?php
-
 use Core\Request;
-
 ?>
 <div class="space-y-6">
     <!-- Header Section -->
@@ -29,7 +27,7 @@ use Core\Request;
 
         <!-- Create Task Button -->
         <a href="/tasks/create" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-500 transition">
-            + Create Task
+            Create Task
         </a>
     </div>
 
@@ -47,7 +45,7 @@ use Core\Request;
                 @foreach($tasks as $task)
                 <tr class="border-b last:border-0 hover:bg-gray-50">
                     <td class="px-6 py-4">
-                        {{ $task->description}}
+                        {{$task->description}}
                     </td>
                     <td class="px-6 py-4">
                         <span class="<?= $task->complete ? 'text-green-600' : 'text-red-600' ?>">
