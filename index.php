@@ -6,26 +6,26 @@ use Core\ErrorHandler;
 use Core\ExceptionHandler;
 
 // Composer autoload
-require dirname(__FILE__) . '/vendor/autoload.php';
+require dirname(__FILE__).'/vendor/autoload.php';
 
 // Define handlers
 set_error_handler([ErrorHandler::class, 'handler']);
 set_exception_handler([ExceptionHandler::class, 'handler']);
 
 // Get config
-require dirname(__FILE__) . '/Core/Config.php';
+require dirname(__FILE__).'/Core/Config.php';
 
 // Load .env variables
-Config::load_env(dirname(__FILE__) . '/.env');
+Config::load_env(dirname(__FILE__).'/.env');
 
 // Set usefull paths
-Config::set('base_path', dirname(__FILE__) . '/');
-Config::set('app_path', Config::get('base_path') . '/App/');
-Config::set('writable_path', Config::get('base_path') . 'writable/');
+Config::set('base_path', dirname(__FILE__).'/');
+Config::set('app_path', Config::get('base_path').'/App/');
+Config::set('writable_path', Config::get('base_path').'writable/');
 
 // Set global functions
-require_once dirname(__FILE__) . '/Core/global_functions.php';
+require_once dirname(__FILE__).'/Core/global_functions.php';
 
 ob_start();
 // Start framework
-require dirname(__FILE__) . '/Core/Bootstrap.php';
+require dirname(__FILE__).'/Core/Bootstrap.php';

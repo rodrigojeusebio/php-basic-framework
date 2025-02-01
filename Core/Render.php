@@ -47,18 +47,19 @@ final class Render extends Singleton
 
     private static function get_view_path(string $path): string
     {
-        return get_app_path() . 'Resources/Views/' . $path . '.basic.php';
+        return get_app_path().'Resources/Views/'.$path.'.basic.php';
     }
 
     private static function get_compiled_view_dir(string $path): string
     {
         $position = mb_strpos($path, 'Views');
         $initial = $position + 6;
-        $path_with_folders = substr($path, $initial);
-        $compiled_view_path = get_writable_path() . $path_with_folders;
-        if (!is_dir(dirname($compiled_view_path))) {
-            mkdir(dirname($compiled_view_path) . '/', 0777, true);
+        $path_with_folders = mb_substr($path, $initial);
+        $compiled_view_path = get_writable_path().$path_with_folders;
+        if (! is_dir(dirname($compiled_view_path))) {
+            mkdir(dirname($compiled_view_path).'/', 0777, true);
         }
+
         return $compiled_view_path;
     }
 
@@ -77,7 +78,7 @@ final class Render extends Singleton
 
         // Save the compiled file to a temporary file and return its path.
         // Here we simply save to the same directory with a .compiled.php extension.
-        $compiled_path = self::get_compiled_view_dir($template_path . '.compiled.php');
+        $compiled_path = self::get_compiled_view_dir($template_path.'.compiled.php');
         // get file name
         file_put_contents($compiled_path, implode("\n", $processed_lines));
 
@@ -197,10 +198,10 @@ final class Render extends Singleton
             return "$php_open else: $php_close";
         }
         // Ensure `use Libs\Auth;` is added only once at the top
-        if (($trimmed === '@auth' || $trimmed === '@guest') && !self::$auth_imported) {
+        if (($trimmed === '@auth' || $trimmed === '@guest') && ! self::$auth_imported) {
             self::$auth_imported = true;
 
-            return "$php_open use Libs\Auth; $php_close\n" . self::process_line($trimmed);
+            return "$php_open use Libs\Auth; $php_close\n".self::process_line($trimmed);
         }
         // @auth --> $php_open if(Auth::check()): $php_close
         if ($trimmed === '@auth') {
