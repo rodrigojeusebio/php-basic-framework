@@ -67,7 +67,7 @@ function old(string $key, mixed $default = ''): mixed
 /**
  * @return array<string,string>
  */
-function error(string $key): array
+function errors(string $key): array
 {
     $flash = get_val(Session::get_flash(), 'errors', []);
 

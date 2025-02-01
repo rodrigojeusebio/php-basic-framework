@@ -13,7 +13,7 @@ class Auth extends Singleton
         Session::regenerate();
 
         /** @var User */
-        $user = (new User)->where('email', '=', $email)->find();
+        $user = User::where('email', '=', $email)->find();
 
         if ($user->loaded() && password_verify($password, $user->password)) {
             self::login($user->id);

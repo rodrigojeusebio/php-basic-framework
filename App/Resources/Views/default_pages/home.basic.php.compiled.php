@@ -24,7 +24,7 @@
 
 <body>
     <div class="flex flex-col min-h-screen">
-        @component('layouts/navigation')
+<?  include '/home/reusebio/php-basic-framework//App/Resources/Views/layouts/navigation.basic.php.compiled.php';  ?>
 
         <!-- Main Content -->
         <main class="flex-1">
