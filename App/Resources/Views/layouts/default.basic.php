@@ -1,5 +1,5 @@
 <?php
-
+use Core\Config;
 ?>
 <!DOCTYPE html>
 <html lang="en">

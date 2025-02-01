@@ -42,6 +42,11 @@ function get_base_path(): ?string
     return Config::get('base_path');
 }
 
+function get_writable_path(): ?string
+{
+    return Config::get('writable_path');
+}
+
 /**
  * @template Tvalue
  *
