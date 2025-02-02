@@ -32,10 +32,10 @@ php -S localhost:8000
 - Middleware
 - Authorization to access resources (Gates or ACL, something like that) - Policies
 - Form builder + Validation
+- Views - built pre-processor - BasicTemplater
 
 ### To do's
 - Table creation
-- Views, should build a pre-processor
 - Validation, helpers to set the checkboxes
 - Improve ORM, currently it is unusable
 - Create a wrapper around the php array
