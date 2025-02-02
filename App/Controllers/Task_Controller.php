@@ -65,11 +65,21 @@ final class Task_Controller
         if ($validation->validate()) {
             $task = Task::create($validation->values);
 
-            Request::redirect("/tasks/$task->id");
+            Request::redirect("/tasks/$task->id", [
+                'notification' => [
+                    'type' => 'info',
+                    'title' => 'Task created sucessfully',
+                ]
+            ]);
         } else {
             Request::redirect('tasks/create', [
                 'values' => $validation->values,
                 'errors' => $validation->errors,
+                'notification' => [
+                    'type' => 'error',
+                    'title' => 'Form has errors',
+                    'message' => 'Fix the error and submit again'
+                ]
             ]);
         }
 
@@ -98,11 +108,21 @@ final class Task_Controller
                 [
                     'values' => $validation->values,
                     'errors' => $validation->errors,
+                    'notification' => [
+                        'type' => 'error',
+                        'title' => 'Form has errors',
+                        'message' => 'Fix the error and submit again'
+                    ]
                 ]
             );
         }
 
-        Request::redirect("/tasks/$task->id");
+        Request::redirect("/tasks/$task->id", [
+                'notification' => [
+                    'type' => 'info',
+                    'title' => 'Task updated sucessfully',
+                ]
+        ]);
     }
 
     public static function destroy(int $id): void
@@ -112,6 +132,12 @@ final class Task_Controller
 
         $task->delete();
 
-        Request::redirect('/tasks');
+        Request::redirect('/tasks', [
+            'notification' => [
+                'title' => 'Task deleted',
+                'message' => "The task '$task->description' was deleted sucessfully",
+                'type' => 'warning'
+            ]
+        ]);
     }
 }

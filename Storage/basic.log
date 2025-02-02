@@ -2016,3 +2016,13 @@ ain}
 #10 /home/reusebio/php-basic-framework/Core/Bootstrap.php(17): Core\Router::route('/tasks/7', Object(Core\HttpMethod))
 #11 /home/reusebio/php-basic-framework/index.php(31): require('/home/reusebio/...')
 #12 {main}
+2025-02-02 10:17:08 | ERROR | htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated | {"errno":8192} | #0 [internal function]: Core\ErrorHandler::handler(8192, 'htmlspecialchar...', '/home/reusebio/...', 51)
+#1 /home/reusebio/php-basic-framework/writable/layouts/default.basic.php.compiled.php(51): htmlspecialchars(NULL)
+#2 /home/reusebio/php-basic-framework/Core/Render.php(44): include('/home/reusebio/...')
+#3 /home/reusebio/php-basic-framework/Core/Render.php(28): Core\Render::page('layouts/default', Array)
+#4 /home/reusebio/php-basic-framework/App/Controllers/Task_Controller.php(37): Core\Render::view('tasks/show', Array)
+#5 [internal function]: App\Controllers\Task_Controller::show(19)
+#6 /home/reusebio/php-basic-framework/Core/Router.php(84): call_user_func(Array, '19')
+#7 /home/reusebio/php-basic-framework/Core/Bootstrap.php(21): Core\Router::route('/tasks/19', Object(Core\HttpMethod))
+#8 /home/reusebio/php-basic-framework/index.php(31): require('/home/reusebio/...')
+#9 {main}

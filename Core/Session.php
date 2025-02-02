@@ -11,7 +11,17 @@ class Session
 
     public static function get(string $key, mixed $default = null): mixed
     {
-        return $_SESSION[$key] ?? $default;
+        return $_SESSION[$key] ?? $_SESSION['_flash'][$key] ?? $default;
+    }
+
+    public static function has(string $key): bool
+    {
+        return isset($_SESSION[$key]) || isset($_SESSION['_flash'][$key]);
+    }
+
+    public static function all(): mixed
+    {
+        return $_SESSION;
     }
 
     public static function start(): void

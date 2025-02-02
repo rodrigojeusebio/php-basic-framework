@@ -1,5 +1,6 @@
 <?php
 use Core\Config;
+use Core\Session;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +34,35 @@ use Core\Config;
             </div>
         </main>
     </div>
+    @if(Session::has('notification'))
+    <?php
+    $session = Session::get('notification');
+    $color = match ($session['type'] ?? 'info') {
+        'info' => 'slate',
+        'warning' => 'amber',
+        'error' => 'rose',
+        default => 'gray'
+    };
+    ?>
+
+    <div id="toast-notification"
+        class="fixed bottom-4 right-4 border-{{ $color }}-700 bg-{{ $color }}-100 text-{{ $color }}-900 border-4 rounded-lg shadow-lg p-4 transition-opacity duration-500 opacity-100 max-w-xs">
+        <h3 class="font-bold text-{{ $color }}-800">{{ get_val($session, 'title', '') }}</h3>
+        <p class="text-{{ $color }}-700">{{ get_val($session, 'message', '') }}</p>
+    </div>
+
+
+    <script>
+        setTimeout(() => {
+            let toast = document.getElementById('toast-notification');
+            if (toast) {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 500); // Remove after fade out
+            }
+        }, 5000);
+    </script>
+    @endif
+
 </body>
 
 </html>
