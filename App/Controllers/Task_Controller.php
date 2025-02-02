@@ -112,6 +112,6 @@ final class Task_Controller
 
         $task->delete();
 
-        Request::redirect('/users');
+        Request::redirect('/tasks');
     }
 }

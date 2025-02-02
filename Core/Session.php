@@ -38,7 +38,6 @@ class Session
 
     public static function regenerate(): void
     {
-
         if (session_id()) {
             session_regenerate_id(true);
         }
