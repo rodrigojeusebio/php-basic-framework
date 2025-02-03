@@ -37,6 +37,13 @@ class Register_Controller
                 if ($len < 7 || $len > 255) {
                     $validation->add_error($field, 'Password must be between 7 and 255 chars');
                 }
+            })
+            ->add_callback('password_confirmation', function (Validation $validation, string $field) {
+                $password = $validation->password;
+                $len = mb_strlen($password);
+                if ($password != $validation->$field) {
+                    $validation->add_error($field, 'Passwords must match');
+                }
             });
 
         if ($validation->validate()) {

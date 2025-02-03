@@ -118,10 +118,10 @@ final class Task_Controller
         }
 
         Request::redirect("/tasks/$task->id", [
-                'notification' => [
-                    'type' => 'info',
-                    'title' => 'Task updated sucessfully',
-                ]
+            'notification' => [
+                'type' => 'info',
+                'title' => 'Task updated sucessfully',
+            ]
         ]);
     }
 
@@ -136,7 +136,7 @@ final class Task_Controller
             'notification' => [
                 'title' => 'Task deleted',
                 'message' => "The task '$task->description' was deleted sucessfully",
-                'type' => 'warning'
+                'type' => 'info'
             ]
         ]);
     }

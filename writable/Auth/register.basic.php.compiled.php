@@ -6,23 +6,23 @@
         <input type="text" id="name" name="name" placeholder="Your full name"
             value="<?= htmlspecialchars(old('name', '')) ?>"
             class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-slate-800">
-        @errors('name')
+<?  foreach(errors('name') as $error):  ?>
         <div class="mt-1 flex items-start space-x-2 bg-red-100 border border-red-500 text-red-800 p-3 rounded">
-            <p>@error</p>
+            <p><?  echo htmlspecialchars($error);  ?></p>
         </div>
-        @enderrors
+<?  endforeach;  ?>
     </div>
 
     <!-- Email Input -->
     <div class="space-y-2">
         <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" value="@old('email')"
+        <input type="email" id="email" name="email" placeholder="Enter your email" value="<?  echo htmlspecialchars(old('email') ?? '');  ?>"
             class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-slate-800">
-        @errors('email')
+<?  foreach(errors('email') as $error):  ?>
         <div class="mt-1 flex items-start space-x-2 bg-red-100 border border-red-500 text-red-800 p-3 rounded">
-            <p>@error</p>
+            <p><?  echo htmlspecialchars($error);  ?></p>
         </div>
-        @enderrors
+<?  endforeach;  ?>
     </div>
 
     <!-- Password Input -->
@@ -30,11 +30,11 @@
         <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
         <input type="password" id="password" name="password" placeholder="Create a password" required
             class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-slate-800">
-        @errors('password')
+<?  foreach(errors('password') as $error):  ?>
         <div class="mt-1 flex items-start space-x-2 bg-red-100 border border-red-500 text-red-800 p-3 rounded">
-            <p>@error</p>
+            <p><?  echo htmlspecialchars($error);  ?></p>
         </div>
-        @enderrors
+<?  endforeach;  ?>
     </div>
 
     <!-- Confirm Password Input -->
@@ -43,11 +43,11 @@
         <input type="password" id="password_confirmation" name="password_confirmation"
             placeholder="Repeat your password" required
             class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-slate-800">
-        @errors('password_confirmation')
+<?  foreach(errors('password_confirmation') as $error):  ?>
         <div class="mt-1 flex items-start space-x-2 bg-red-100 border border-red-500 text-red-800 p-3 rounded">
-            <p>@error</p>
+            <p><?  echo htmlspecialchars($error);  ?></p>
         </div>
-        @enderrors
+<?  endforeach;  ?>
     </div>
 
     <!-- Submit Button -->
