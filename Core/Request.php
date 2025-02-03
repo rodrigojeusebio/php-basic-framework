@@ -75,6 +75,7 @@ final class Request
 
     public static function unauthorized(): never
     {
+        http_response_code(401);
         Render::page('default_pages/401');
         exit;
     }

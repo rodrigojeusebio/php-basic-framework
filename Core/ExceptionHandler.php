@@ -35,6 +35,7 @@ final class ExceptionHandler
         }
 
         ob_clean();
+        http_response_code(500);
         if (Config::get('env') !== 'production') {
             Render::page('default_pages/ExceptionViewer', [
                 'level' => $level,
