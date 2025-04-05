@@ -1,5 +1,5 @@
 /vendor/
 mock.log
 test.php
-writable/
+writable/**/*
 
