@@ -58,7 +58,7 @@ class BasicTemplater
 
         // === Handle Block Directives with Parentheses (manual parsing) ===
 
-        $php_open = '<? ';
+        $php_open = '<?php ';
         $php_close = ' ?>';
         // @if(...) --> $php_open if(...): $php_close
         if (mb_strpos($trimmed, '@if(') === 0) {
